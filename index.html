@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Auto Video Generator - Grade 12 Science</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: black;
+  color: white;
+  text-align: center;
+}
+#canvas {
+  width: 100%;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+h1 { font-size: 50px; }
+p { font-size: 28px; }
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  margin: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div id="canvas">
+  <h1 id="title">Grade 12 Physical Science</h1>
+  <p id="text">Click Start to Generate Video</p>
+</div>
+
+<button onclick="startLesson()">▶ Start Lesson</button>
+<button onclick="downloadVideo()">⬇ Download Video</button>
+
+<script>
+const slides = [
+  {title: "Newton's Laws", text: "Grade 12 Physical Science"},
+  {title: "First Law", text: "An object remains at rest unless a force acts"},
+  {title: "Second Law", text: "Force equals mass times acceleration"},
+  {title: "Third Law", text: "Every action has an equal opposite reaction"},
+  {title: "Exam Tip", text: "Always draw force diagrams"}
+];
+
+let index = 0;
+let mediaRecorder;
+let recordedChunks = [];
+
+function speak(text) {
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.rate = 0.9;
+  speech.pitch = 1;
+  speech.lang = "en-ZA";
+  speechSynthesis.speak(speech);
+}
+
+function startLesson() {
+  const stream = document.body.captureStream(30);
+  mediaRecorder = new MediaRecorder(stream);
+  
+  mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
+  
+  mediaRecorder.start();
+
+  showSlide();
+}
+
+function showSlide() {
+  if (index >= slides.length) {
+    mediaRecorder.stop();
+    return;
+  }
+
+  document.getElementById("title").innerText = slides[index].title;
+  document.getElementById("text").innerText = slides[index].text;
+
+  speak(slides[index].title + ". " + slides[index].text);
+
+  index++;
+  setTimeout(showSlide, 4000);
+}
+
+function downloadVideo() {
+  const blob = new Blob(recordedChunks, { type: "video/webm" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "lesson.webm";
+  a.click();
+}
+</script>
+
+</body>
+  </html>
