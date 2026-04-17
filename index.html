@@ -1,75 +1,73 @@
-<button onclick="window.open('https://pay.yoco.com/r/2wRZvM','_blank')"
-style="
-padding:15px;
-background:#e60000;
-color:white;
-border:none;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
-width:100%;
-max-width:300px;
-">
-💰 Buy Grade 12 Science Pack - R49
-</button>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Grade 12 Physical Science | Premium Study Hub</title>
+<title>Grade 12 Physical Science Premium Course</title>
 
 <style>
 body {
   margin:0;
   font-family: Arial;
-  background:#0a0a0a;
+  background:#0b0b0b;
   color:white;
 }
 
 header {
-  background: linear-gradient(90deg, red, darkred);
-  padding: 20px;
-  text-align: center;
+  background: linear-gradient(90deg, #cc0000, #ff0000);
+  padding:25px;
+  text-align:center;
 }
 
 h1 { margin:0; }
 
-.container {
+.section {
   padding:20px;
 }
 
 .card {
-  background:#1a1a1a;
-  padding:20px;
-  margin:15px 0;
+  background:#1c1c1c;
+  margin:15px auto;
+  padding:15px;
   border-radius:10px;
+  max-width:700px;
 }
 
-img {
-  width:100%;
+.row {
+  display:flex;
+  overflow-x:auto;
+  gap:15px;
+}
+
+.lesson {
+  min-width:260px;
+  background:#222;
   border-radius:10px;
+  overflow:hidden;
+}
+
+.lesson img {
+  width:100%;
+  height:140px;
+  object-fit:cover;
+}
+
+.lesson-content {
+  padding:10px;
 }
 
 button {
-  padding:12px 20px;
-  margin-top:10px;
-  cursor:pointer;
+  padding:15px;
   background:red;
   color:white;
   border:none;
-  border-radius:5px;
-}
-
-.locked {
-  opacity:0.4;
-}
-
-/* VIDEO */
-iframe {
   width:100%;
-  height:250px;
-  border:none;
-  border-radius:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.price {
+  font-size:20px;
+  color:lime;
 }
 </style>
 </head>
@@ -77,91 +75,102 @@ iframe {
 <body>
 
 <header>
-  <h1>🔥 Grade 12 Physical Science</h1>
-  <p>Pass Your Exams with Real Lessons & Videos</p>
+<h1>🔥 Grade 12 Physical Science Master Course</h1>
+<p>Pass Faster • Learn Smarter • Exam Ready</p>
 </header>
 
-<div class="container">
+<!-- SALES SECTION -->
+<div class="section">
 
-<!-- LOGIN -->
-<div class="card" id="loginBox">
-  <h2>Login</h2>
-  <input type="text" id="name" placeholder="Enter your name"><br>
-  <button onclick="login()">Enter</button>
-</div>
-
-<!-- MAIN -->
-<div id="main" style="display:none;">
-
-<h2>Welcome <span id="user"></span></h2>
-
-<!-- PAYMENT -->
 <div class="card">
-  <h3>💰 Premium Access</h3>
-  <p>Unlock all videos + full study guide</p>
-  <button onclick="pay()">Pay R49</button>
+<h2>💰 Full Course Access</h2>
+<p class="price">Only R49 Once-Off</p>
+<p>Includes 20 structured lessons + visuals + exam tips</p>
+
+<button onclick="window.open('https://pay.yoco.com/r/2wRZvM','_blank')">
+Buy Now with Yoco
+</button>
 </div>
 
-<!-- FREE SECTION -->
+</div>
+
+<!-- FREE PREVIEW -->
+<div class="section">
+<h2>📘 Free Lessons Preview</h2>
+
+<div class="row">
+
+<div class="lesson">
+<img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0">
+<div class="lesson-content">
+<h3>Newton’s Laws</h3>
+<iframe width="100%" height="150"
+src="https://www.youtube.com/embed/kKKM8Y-u7ds"></iframe>
+</div>
+</div>
+
+<div class="lesson">
+<img src="https://images.unsplash.com/photo-1509228468518-180dd4864904">
+<div class="lesson-content">
+<h3>Energy & Work</h3>
+<iframe width="100%" height="150"
+src="https://www.youtube.com/embed/6c5q0f2f8k8"></iframe>
+</div>
+</div>
+
+<div class="lesson">
+<img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e">
+<div class="lesson-content">
+<h3>Electric Circuits</h3>
+<iframe width="100%" height="150"
+src="https://www.youtube.com/embed/8mve0hH3pE8"></iframe>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- FULL 20 LESSON LIST -->
+<div class="section">
+<h2>📚 Full 20-Lesson Study Pack</h2>
+
 <div class="card">
-  <h3>📘 Free Lesson: Newton’s Laws</h3>
-
-  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb">
-
-  <p>Newton’s Laws explain motion and forces.</p>
-
-  <iframe src="https://www.youtube.com/embed/kKKM8Y-u7ds"></iframe>
-
+✔ Newton’s Laws of Motion<br>
+✔ Momentum & Impulse<br>
+✔ Work, Energy & Power<br>
+✔ Waves & Sound<br>
+✔ Doppler Effect<br>
+✔ Electric Circuits<br>
+✔ Ohm’s Law<br>
+✔ Series & Parallel Circuits<br>
+✔ Electrostatics<br>
+✔ Electric Fields<br>
+✔ Atomic Structure<br>
+✔ Periodic Table Trends<br>
+✔ Chemical Bonding<br>
+✔ Stoichiometry<br>
+✔ Acids & Bases<br>
+✔ Organic Chemistry<br>
+✔ Rates of Reaction<br>
+✔ Equilibrium<br>
+✔ Magnetism<br>
+✔ Exam Paper Practice
+</div>
 </div>
 
-<!-- PREMIUM SECTION -->
-<div class="card locked" id="premium">
-  <h3>🔒 Premium: Electricity & Circuits</h3>
-
-  <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e">
-
-  <p>Master circuits, voltage, and current.</p>
-
-  <iframe src="https://www.youtube.com/embed/8mve0hH3pE8"></iframe>
-
-</div>
-
-<!-- MORE CONTENT -->
+<!-- WHY BUY -->
+<div class="section">
 <div class="card">
-  <h3>📚 Topics Covered (CAPS)</h3>
-  <ul>
-    <li>Mechanics</li>
-    <li>Electricity & Magnetism</li>
-    <li>Waves & Doppler Effect</li>
-    <li>Organic Chemistry</li>
-    <li>Acids & Bases</li>
-  </ul>
+<h2>🎯 Why Students Buy This</h2>
+<p>
+✔ Simple explanations<br>
+✔ Exam-focused questions<br>
+✔ Real-life examples<br>
+✔ Visual learning system<br>
+✔ Mobile-friendly study pack
+</p>
 </div>
-
 </div>
-
-</div>
-
-<script>
-let paid = false;
-
-function login(){
-  let name = document.getElementById("name").value;
-  if(name){
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("main").style.display="block";
-    document.getElementById("user").innerText=name;
-  }
-}
-
-function pay(){
-  window.open("https://www.payfast.co.za/eng/process","_blank");
-  alert("Payment successful (demo)");
-  paid = true;
-
-  document.getElementById("premium").classList.remove("locked");
-}
-</script>
 
 </body>
-    </html>
+  </html>
