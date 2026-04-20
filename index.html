@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyPro SA - Full Course</title><style>
+body{margin:0;font-family:Arial;background:#0f172a;color:#fff}
+header{padding:20px;background:linear-gradient(90deg,#2563eb,#7c3aed);text-align:center}
+.container{padding:20px}
+.row{display:flex;overflow-x:auto;gap:15px}
+.card{min-width:260px;background:#1e293b;border-radius:12px;padding:15px}
+.card img{width:100%;border-radius:10px}
+button{width:100%;padding:10px;margin-top:10px;border:none;border-radius:8px;background:#22c55e;color:#fff}
+.hidden{display:none}
+.banner{background:url('https://images.unsplash.com/photo-1532094349884-543bc11b234d') center/cover;height:180px;border-radius:12px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+.banner h2{background:rgba(0,0,0,0.6);padding:10px;border-radius:8px}
+</style></head>
+<body><header>
+<h1>🎬 StudyPro SA</h1>
+<p>Grade 12 Physical Science Full Course</p>
+</header><div class="container"><div class="banner">
+<h2>Unlock Full Course - R49</h2>
+</div><!-- LOGIN --><div id="auth">
+<input id="email" placeholder="Enter Email" style="width:100%;padding:10px">
+<button onclick="login()">Login</button>
+</div><!-- DASHBOARD --><div id="dashboard" class="hidden">
+<p id="user"></p>
+<button onclick="payNow()">💳 Pay with Yoco</button>
+<input id="code" placeholder="Enter Access Code">
+<button onclick="unlock()">Unlock</button>
+</div><!-- CONTENT --><div id="content" class="hidden"><h2>⚡ Physics</h2>
+<div class="row">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581093458791-9d15482442f2">
+<h3>Mechanics</h3>
+<button onclick="play('https://www.youtube.com/embed/2u6Z6l5P9Kk')">Watch Lesson</button>
+<a href="pdfs/mechanics.pdf" download><button>Download PDF</button></a>
+</div><div class="card">
+<img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2">
+<h3>Momentum</h3>
+<button onclick="play('https://www.youtube.com/embed/7dZgJH4qC6k')">Watch Lesson</button>
+<a href="pdfs/momentum.pdf" download><button>Download PDF</button></a>
+</div>
+</div><h2>⚗️ Chemistry</h2>
+<div class="row">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+<h3>Organic Chemistry</h3>
+<button onclick="play('https://www.youtube.com/embed/5bLk8k3w3pI')">Watch Lesson</button>
+<a href="pdfs/organic.pdf" download><button>Download PDF</button></a>
+</div><div class="card">
+<img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6">
+<h3>Acids & Bases</h3>
+<button onclick="play('https://www.youtube.com/embed/3C8h4lZ2k3s')">Watch Lesson</button>
+<a href="pdfs/acids.pdf" download><button>Download PDF</button></a>
+</div>
+</div><!-- VIDEO PLAYER --><div id="player" class="hidden">
+<h2>🎥 Lesson Player</h2>
+<iframe id="frame" width="100%" height="300"></iframe>
+</div></div></div><script>
+const ACCESS_CODE = "SCIENCE123";
+
+function login(){
+const email = document.getElementById('email').value;
+if(!email){alert('Enter email');return}
+localStorage.setItem('user',email);
+document.getElementById('auth').classList.add('hidden');
+document.getElementById('dashboard').classList.remove('hidden');
+document.getElementById('user').innerText = "Logged in as: "+email;
+}
+
+function payNow(){
+window.location.href = "https://pay.yoco.com/YOUR-LINK";
+}
+
+function unlock(){
+const code = document.getElementById('code').value;
+if(code===ACCESS_CODE){
+localStorage.setItem('paid','true');
+document.getElementById('content').classList.remove('hidden');
+alert('Unlocked!');
+}else{
+alert('Wrong code');
+}
+}
+
+function play(link){
+if(localStorage.getItem('paid')!=='true'){
+alert('Unlock course first');return;
+}
+document.getElementById('player').classList.remove('hidden');
+document.getElementById('frame').src = link;
+}
+
+window.onload = function(){
+if(localStorage.getItem('user')){
+document.getElementById('auth').classList.add('hidden');
+document.getElementById('dashboard').classList.remove('hidden');
+}
+if(localStorage.getItem('paid')==='true'){
+document.getElementById('content').classList.remove('hidden');
+}
+}
+</script></body>
+                                  </html>
