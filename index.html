@@ -1318,12 +1318,9 @@ footer{
 <!-- =====================================================
      FIREBASE
 ===================================================== -->
-
 <script type="module">
 
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
   getAuth,
@@ -1333,45 +1330,166 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-/* YOUR FIREBASE WEB CONFIG */
-
 const firebaseConfig = {
-
-  apiKey:
-    "AIzaSyAGlAUzxjZ7UlQTrh6JNW4L_C5JknFdA08",
-
-  authDomain:
-    "study-pro-sa.firebaseapp.com",
-
-  projectId:
-    "study-pro-sa",
-
-  storageBucket:
-    "study-pro-sa.firebasestorage.app",
-
-  messagingSenderId:
-    "1043280089865",
-
-  appId:
-    "1:1043280089865:web:243db4f82a3ef818b279d8",
-
-  measurementId:
-    "G-YNKK9S7869"
-
+  apiKey: "AIzaSyAGlAUzxjZ7UlQTrh6JNW4L_C5JknFdA08",
+  authDomain: "study-pro-sa.firebaseapp.com",
+  projectId: "study-pro-sa",
+  storageBucket: "study-pro-sa.firebasestorage.app",
+  messagingSenderId: "1043280089865",
+  appId: "1:1043280089865:web:243db4f82a3ef818b279d8",
+  measurementId: "G-YNKK9S7869"
 };
 
 
-/* INITIALISE FIREBASE */
-
-const app =
-  initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 
-/* INITIALISE AUTH */
+const loginView = document.getElementById("loginView");
+const appView = document.getElementById("appView");
 
-const auth =
-  getAuth(app);
+const loginForm = document.getElementById("loginForm");
+const loginError = document.getElementById("loginError");
+const loginStatus = document.getElementById("loginStatus");
+const loginButton = document.getElementById("loginButton");
 
+
+loginForm.addEventListener("submit", async (event) => {
+
+  event.preventDefault();
+
+  loginError.textContent = "";
+  loginStatus.textContent = "Connecting to Firebase...";
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  if (!email || !password) {
+
+    loginError.textContent =
+      "Please enter both email and password.";
+
+    loginStatus.textContent = "";
+
+    return;
+  }
+
+  loginButton.disabled = true;
+  loginButton.textContent = "Signing in...";
+
+  try {
+
+    const result =
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    console.log(
+      "Firebase login successful:",
+      result.user.email
+    );
+
+    loginStatus.textContent =
+      "Firebase login successful. Loading dashboard...";
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "FIREBASE LOGIN ERROR:",
+      error
+    );
+
+    loginError.innerHTML =
+      "<strong>Firebase error:</strong><br>" +
+      error.code +
+      "<br><small>" +
+      (error.message || "") +
+      "</small>";
+
+    loginStatus.textContent =
+      "Login failed. The error above tells us what to fix.";
+
+  }
+
+  finally {
+
+    loginButton.disabled = false;
+    loginButton.textContent = "Sign in";
+
+  }
+
+});
+
+
+onAuthStateChanged(auth, (user) => {
+
+  console.log(
+    "AUTH STATE:",
+    user ? user.email : "SIGNED OUT"
+  );
+
+  if (user) {
+
+    loginView.classList.add("hidden");
+    appView.classList.remove("hidden");
+
+    const userLabel =
+      document.getElementById("userLabel");
+
+    if (userLabel) {
+      userLabel.textContent =
+        user.email || "Student";
+    }
+
+  }
+
+  else {
+
+    loginView.classList.remove("hidden");
+    appView.classList.add("hidden");
+
+  }
+
+});
+
+
+const logoutButton =
+  document.getElementById("logoutButton");
+
+if (logoutButton) {
+
+  logoutButton.addEventListener(
+    "click",
+    async () => {
+
+      try {
+
+        await signOut(auth);
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Logout error:",
+          error
+        );
+
+      }
+
+    }
+  );
+
+}
+
+    </script>
 
 /* =====================================================
    LOGIN
@@ -1381,7 +1499,7 @@ const loginForm =
   document.getElementById("loginForm");
 
 const loginError =
-  document.getElementById("loginError");
+  document.getElementById("login);
 
 const loginStatus =
   document.getElementById("loginStatus");
