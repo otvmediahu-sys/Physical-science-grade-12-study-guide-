@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudyPro SA | Grade 12 Physical Sciences</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+a{
+  text-decoration:none;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginView{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background:linear-gradient(135deg,#07111f,#174ea6);
+}
+
+.login-card{
+  width:100%;
+  max-width:430px;
+  background:white;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:900;
+  color:#111827;
+}
+
+.logo span{
+  color:#2563eb;
+}
+
+.login-card h1{
+  margin:20px 0 8px;
+}
+
+.login-card p{
+  color:#64748b;
+  line-height:1.5;
+}
+
+.field{
+  margin:18px 0;
+}
+
+.field label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.field input{
+  width:100%;
+  padding:14px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  font-size:16px;
+}
+
+.field input:focus{
+  outline:none;
+  border-color:#2563eb;
+}
+
+.btn{
+  border:none;
+  border-radius:10px;
+  padding:12px 16px;
+  font-weight:bold;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:white;
+}
+
+.btn-primary:hover{
+  background:#1d4ed8;
+}
+
+.btn-light{
+  background:#f1f5f9;
+  color:#172033;
+}
+
+.btn-success{
+  background:#16a34a;
+  color:white;
+}
+
+.error{
+  color:#dc2626;
+  min-height:22px;
+  font-size:14px;
+}
+
+.status{
+  color:#475569;
+  min-height:22px;
+  font-size:14px;
+}
+
+/* =========================
+   APP
+========================= */
+
+#appView{
+  min-height:100vh;
+}
+
+.topbar{
+  height:64px;
+  background:#0b1220;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.topbar .logo{
+  color:white;
+  font-size:21px;
+}
+
+.topbar .logo span{
+  color:#38bdf8;
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.user-email{
+  font-size:13px;
+  color:#dbeafe;
+}
+
+.logout{
+  border:1px solid rgba(255,255,255,.3);
+  background:transparent;
+  color:white;
+  padding:9px 13px;
+  border-radius:8px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 64px);
+}
+
+.sidebar{
+  width:240px;
+  background:#111827;
+  color:#d1d5db;
+  padding:18px 12px;
+  flex-shrink:0;
+}
+
+.sidebar-title{
+  font-size:11px;
+  color:#94a3b8;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  padding:10px;
+}
+
+.nav-btn{
+  width:100%;
+  border:none;
+  background:transparent;
+  color:#d1d5db;
+  text-align:left;
+  padding:13px;
+  border-radius:9px;
+  margin:2px 0;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#1e293b;
+  color:white;
+}
+
+.main{
+  flex:1;
+  padding:25px;
+  max-width:1500px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  background:linear-gradient(135deg,#0b1220,#164e8b);
+  color:white;
+  border-radius:20px;
+  padding:30px;
+  margin-bottom:25px;
+}
+
+.hero .badge{
+  display:inline-block;
+  background:rgba(255,255,255,.12);
+  padding:7px 12px;
+  border-radius:30px;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  font-size:clamp(30px,5vw,48px);
+  margin:8px 0;
+}
+
+.hero p{
+  color:#dbeafe;
+  max-width:700px;
+  line-height:1.6;
+}
+
+/* =========================
+   LESSON CARDS
+========================= */
+
+.section-title{
+  margin:25px 0 15px;
+}
+
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.lesson-card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 5px 18px rgba(15,23,42,.05);
+}
+
+.lesson-card .number{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#eff6ff;
+  color:#2563eb;
+  font-weight:bold;
+}
+
+.lesson-card h3{
+  margin:14px 0 8px;
+}
+
+.lesson-card p{
+  color:#64748b;
+  line-height:1.5;
+  font-size:14px;
+}
+
+.lesson-card button{
+  width:100%;
+  margin-top:8px;
+}
+
+/* =========================
+   LESSON PAGE
+========================= */
+
+.lesson-page{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  border:1px solid #e5e7eb;
+}
+
+.lesson-page h1{
+  font-size:32px;
+}
+
+.lesson-page h2{
+  margin-top:30px;
+}
+
+.lesson-page p,
+.lesson-page li{
+  line-height:1.7;
+}
+
+.formula{
+  background:#eff6ff;
+  border-left:5px solid #2563eb;
+  padding:16px;
+  border-radius:8px;
+  margin:18px 0;
+  font-weight:bold;
+  font-family:monospace;
+  font-size:16px;
+}
+
+.note{
+  background:#fffbeb;
+  border:1px solid #fcd34d;
+  padding:16px;
+  border-radius:10px;
+  margin:18px 0;
+}
+
+.resource-box{
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:12px;
+  padding:18px;
+  margin-top:20px;
+}
+
+.resource-box a{
+  display:inline-block;
+  margin:6px 6px 6px 0;
+}
+
+.video{
+  margin-top:20px;
+  background:#0f172a;
+  color:white;
+  border-radius:12px;
+  padding:20px;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  border:1px solid #e5e7eb;
+}
+
+.question{
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:18px;
+  margin:15px 0;
+}
+
+.question label{
+  display:block;
+  padding:9px;
+  border-radius:7px;
+}
+
+.question label:hover{
+  background:#f8fafc;
+}
+
+.result{
+  margin-top:20px;
+  padding:18px;
+  border-radius:10px;
+  background:#ecfdf5;
+  color:#166534;
+  font-weight:bold;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-box{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  border:1px solid #e5e7eb;
+}
+
+.progress-track{
+  height:12px;
+  background:#e5e7eb;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#2563eb,#06b6d4);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+  .lesson-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .sidebar{
+    width:210px;
+  }
+}
+
+@media(max-width:700px){
+
+  .topbar{
+    height:auto;
+    min-height:62px;
+    padding:10px 14px;
+  }
+
+  .user-email{
+    display:none;
+  }
+
+  .layout{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    display:flex;
+    overflow-x:auto;
+    padding:7px;
+    position:sticky;
+    top:62px;
+    z-index:50;
+  }
+
+  .sidebar-title{
+    display:none;
+  }
+
+  .nav-btn{
+    width:auto;
+    white-space:nowrap;
+  }
+
+  .main{
+    padding:15px;
+  }
+
+  .lesson-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:23px;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ==================================================
+     LOGIN
+================================================== -->
+
+<div id="loginView">
+
+  <div class="login-card">
+
+    <div class="logo">
+      StudyPro <span>SA</span>
+    </div>
+
+    <h1>Secure Student Login</h1>
+
+    <p>
+      Sign in to access your Grade 12 Physical Sciences lessons.
+    </p>
+
+    <form id="loginForm">
+
+      <div class="field">
+        <label>Email address</label>
+
+        <input
+          id="email"
+          type="email"
+          placeholder="student@example.com"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Your password"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <div id="loginError" class="error"></div>
+
+      <div id="loginStatus" class="status"></div>
+
+      <button
+        id="loginButton"
+        class="btn btn-primary"
+        type="submit"
+        style="width:100%"
+      >
+        Sign in
+      </button>
+
+    </form>
+
+    <p style="font-size:12px">
+      Use the student account already created in Firebase Authentication.
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ==================================================
+     APPLICATION
+================================================== -->
+
+<div id="appView" class="hidden">
+
+  <header class="topbar">
+
+    <div class="logo">
+      StudyPro <span>SA</span>
+    </div>
+
+    <div class="user-area">
+
+      <span id="userEmail" class="user-email"></span>
+
+      <button id="logoutButton" class="logout">
+        Log out
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="sidebar-title">
+        StudyPro SA
+      </div>
+
+      <button
+        class="nav-btn active"
+        data-page="home"
+      >
+        🏠 Start Studying
+      </button>
+
+      <button
+        class="nav-btn"
+        data-page="physics"
+      >
+        ⚡ Physics
+      </button>
+
+      <button
+        class="nav-btn"
+        data-page="chemistry"
+      >
+        🧪 Chemistry
+      </button>
+
+      <button
+        class="nav-btn"
+        data-page="quiz"
+      >
+        📝 Practice Quiz
+      </button>
+
+      <button
+        class="nav-btn"
+        data-page="progress"
+      >
+        📊 My Progress
+      </button>
+
+    </aside>
+
+
+    <main class="main">
+
+      <!-- ============================================
+           HOME / START STUDYING
+      ============================================= -->
+
+      <section id="homePage">
+
+        <div class="hero">
+
+          <span class="badge">
+            GRADE 12 • PHYSICAL SCIENCES
+          </span>
+
+          <h1>
+            Start Studying
+          </h1>
+
+          <p>
+            Your lessons are ready. Choose Physics or Chemistry
+            below and begin studying immediately.
+          </p>
+
+        </div>
+
+
+        <h2 class="section-title">
+          ⚡ Physics Lessons
+        </h2>
+
+        <div id="physicsLessons" class="lesson-grid"></div>
+
+
+        <h2 class="section-title">
+          🧪 Chemistry Lessons
+        </h2>
+
+        <div id="chemistryLessons" class="lesson-grid"></div>
+
+      </section>
+
+
+      <!-- ============================================
+           PHYSICS
+      ============================================= -->
+
+      <section id="physicsPage" class="hidden">
+
+        <h1>⚡ Physics</h1>
+
+        <p>
+          Grade 12 Physics lessons.
+        </p>
+
+        <div id="physicsLessons2" class="lesson-grid"></div>
+
+      </section>
+
+
+      <!-- ============================================
+           CHEMISTRY
+      ============================================= -->
+
+      <section id="chemistryPage" class="hidden">
+
+        <h1>🧪 Chemistry</h1>
+
+        <p>
+          Grade 12 Chemistry lessons.
+        </p>
+
+        <div id="chemistryLessons2" class="lesson-grid"></div>
+
+      </section>
+
+
+      <!-- ============================================
+           LESSON VIEW
+      ============================================= -->
+
+      <section id="lessonPage" class="hidden">
+
+        <div class="lesson-page">
+
+          <button
+            id="backButton"
+            class="btn btn-light"
+          >
+            ← Back to lessons
+          </button>
+
+          <div id="lessonContent"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ============================================
+           QUIZ
+      ============================================= -->
+
+      <section id="quizPage" class="hidden">
+
+        <h1>📝 Practice Quiz</h1>
+
+        <p>
+          Test your Grade 12 Physical Sciences knowledge.
+        </p>
+
+        <form id="quizForm" class="quiz">
+
+          <div class="question">
+
+            <strong>
+              1. What is the SI unit of force?
+            </strong>
+
+            <label>
+              <input type="radio" name="q1" value="a">
+              Joule
+            </label>
+
+            <label>
+              <input type="radio" name="q1" value="b">
+              Newton
+            </label>
+
+            <label>
+              <input type="radio" name="q1" value="c">
+              Watt
+            </label>
+
+          </div>
+
+
+          <div class="question">
+
+            <strong>
+              2. Which quantity is conserved in an isolated collision?
+            </strong>
+
+            <label>
+              <input type="radio" name="q2" value="a">
+              Momentum
+            </label>
+
+            <label>
+              <input type="radio" name="q2" value="b">
+              Temperature
+            </label>
+
+            <label>
+              <input type="radio" name="q2" value="c">
+              Volume
+            </label>
+
+          </div>
+
+
+          <div class="question">
+
+            <strong>
+              3. What is the pH of a neutral solution at 25 °C?
+            </strong>
+
+            <label>
+              <input type="radio" name="q3" value="a">
+              0
+            </label>
+
+            <label>
+              <input type="radio" name="q3" value="b">
+              7
+            </label>
+
+            <label>
+              <input type="radio" name="q3" value="c">
+              14
+            </label>
+
+          </div>
+
+
+          <div class="question">
+
+            <strong>
+              4. Which equation represents Ohm's law?
+            </strong>
+
+            <label>
+              <input type="radio" name="q4" value="a">
+              V = IR
+            </label>
+
+            <label>
+              <input type="radio" name="q4" value="b">
+              P = mgh
+            </label>
+
+            <label>
+              <input type="radio" name="q4" value="c">
+              F = ma
+            </label>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Submit Quiz
+          </button>
+
+          <div id="quizResult"></div>
+
+        </form>
+
+      </section>
+
+
+      <!-- ============================================
+           PROGRESS
+      ============================================= -->
+
+      <section id="progressPage" class="hidden">
+
+        <h1>📊 My Progress</h1>
+
+        <div class="progress-box">
+
+          <h2>
+            Lessons completed:
+            <span id="completedCount">0</span>
+          </h2>
+
+          <div class="progress-track">
+
+            <div
+              id="progressFill"
+              class="progress-fill"
+            ></div>
+
+          </div>
+
+          <p id="progressText">
+            Start your first lesson.
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     FIREBASE
+================================================== -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+/* ================================================
+   YOUR FIREBASE CONFIGURATION
+================================================ */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyAGlAUzxjZ7UlQTrh6JNW4L_C5JknFdA08",
+
+  authDomain:
+  "study-pro-sa.firebaseapp.com",
+
+  projectId:
+  "study-pro-sa",
+
+  storageBucket:
+  "study-pro-sa.firebasestorage.app",
+
+  messagingSenderId:
+  "1043280089865",
+
+  appId:
+  "1:1043280089865:web:243db4f82a3ef818b279d8",
+
+  measurementId:
+  "G-YNKK9S7869"
+};
+
+
+/* ================================================
+   START FIREBASE
+================================================ */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+/* ================================================
+   HTML ELEMENTS
+================================================ */
+
+const loginView =
+document.getElementById("loginView");
+
+const appView =
+document.getElementById("appView");
+
+const loginForm =
+document.getElementById("loginForm");
+
+const loginButton =
+document.getElementById("loginButton");
+
+const loginError =
+document.getElementById("loginError");
+
+const loginStatus =
+document.getElementById("loginStatus");
+
+const userEmail =
+document.getElementById("userEmail");
+
+const logoutButton =
+document.getElementById("logoutButton");
+
+
+/* ================================================
+   LOGIN PERSISTENCE
+================================================ */
+
+setPersistence(
+  auth,
+  browserLocalPersistence
+).catch(function(error){
+
+  console.error(
+    "Persistence error:",
+    error
+  );
+
+});
+
+
+/* ================================================
+   LOGIN
+================================================ */
+
+loginForm.addEventListener(
+  "submit",
+  async function(event){
+
+    event.preventDefault();
+
+    loginError.textContent="";
+    loginStatus.textContent="";
+
+    const email =
+    document.getElementById("email")
+    .value
+    .trim();
+
+    const password =
+    document.getElementById("password")
+    .value;
+
+    if(!email || !password){
+
+      loginError.textContent =
+      "Please enter your email and password.";
+
+      return;
+    }
+
+    loginButton.disabled=true;
+
+    loginButton.textContent=
+    "Signing in...";
+
+    loginStatus.textContent=
+    "Connecting to Firebase...";
+
+    try{
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      loginStatus.textContent=
+      "Login successful.";
+
+    }
+
+    catch(error){
+
+      console.error(error);
+
+      let message=
+      "Unable to sign in.";
+
+      if(error.code==="auth/invalid-credential"){
+        message=
+        "Incorrect email or password.";
+      }
+
+      else if(error.code==="auth/user-not-found"){
+        message=
+        "No Firebase account was found for this email.";
+      }
+
+      else if(error.code==="auth/wrong-password"){
+        message=
+        "Incorrect password.";
+      }
+
+      else if(error.code==="auth/invalid-email"){
+        message=
+        "Please enter a valid email address.";
+      }
+
+      else if(error.code==="auth/too-many-requests"){
+        message=
+        "Too many attempts. Please wait and try again.";
+      }
+
+      else{
+        message=
+        "Firebase error: " +
+        error.message;
+      }
+
+      loginError.textContent=message;
+
+      loginStatus.textContent="";
+
+    }
+
+    finally{
+
+      loginButton.disabled=false;
+
+      loginButton.textContent=
+      "Sign in";
+
+    }
+
+  }
+);
+
+
+/* ================================================
+   AUTH STATE
+================================================ */
+
+onAuthStateChanged(
+  auth,
+  function(user){
+
+    if(user){
+
+      console.log(
+        "Firebase user:",
+        user.email
+      );
+
+      loginView.classList.add("hidden");
+
+      appView.classList.remove("hidden");
+
+      userEmail.textContent=
+      user.email || "Student";
+
+      /*
+        IMPORTANT:
+        After successful login we immediately
+        show the Start Studying page.
+      */
+
+      showPage("home");
+
+    }
+
+    else{
+
+      loginView.classList.remove("hidden");
+
+      appView.classList.add("hidden");
+
+      userEmail.textContent="";
+
+    }
+
+  }
+);
+
+
+/* ================================================
+   LOGOUT
+================================================ */
+
+logoutButton.addEventListener(
+  "click",
+  async function(){
+
+    try{
+
+      await signOut(auth);
+
+    }
+
+    catch(error){
+
+      console.error(error);
+
+    }
+
+  }
+);
+
+
+/* ================================================
+   LESSON DATA
+================================================ */
+
+const physicsLessons = [
+
+  {
+    id:"physics-1",
+    number:"1",
+    title:"Vectors & Scalars",
+    description:
+    "Understand scalar and vector quantities, components and resultant vectors.",
+    subject:"Physics",
+    content:`
+      <h1>Vectors & Scalars</h1>
+
+      <h2>What is a scalar?</h2>
+
+      <p>
+        A scalar quantity has magnitude only.
+        Examples include distance, speed, mass and temperature.
+      </p>
+
+      <h2>What is a vector?</h2>
+
+      
