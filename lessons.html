@@ -1,0 +1,910 @@
+<!-- =========================================================
+     STUDYPRO SA — LESSONS + VIDEOS + PDF RESOURCES
+     Save this file as: lessons.html
+========================================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudyPro SA Grade 12 Physical Sciences Lessons">
+<title>StudyPro SA | Lessons</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+header{
+  background:#0b1220;
+  color:white;
+  padding:16px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#38bdf8;
+}
+
+.header-right{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+button,
+a.button{
+  border:0;
+  border-radius:9px;
+  padding:11px 15px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.primary{
+  background:#2563eb;
+  color:white;
+}
+
+.dark{
+  background:#111827;
+  color:white;
+}
+
+.light{
+  background:white;
+  color:#172033;
+  border:1px solid #e5e7eb;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 18px 50px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#0b1220,#12356b);
+  color:white;
+  padding:30px;
+  border-radius:18px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  margin:0 0 10px;
+  font-size:36px;
+}
+
+.hero p{
+  color:#dbeafe;
+  line-height:1.6;
+}
+
+.tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.tab{
+  background:white;
+  border:1px solid #e5e7eb;
+  color:#172033;
+}
+
+.tab.active{
+  background:#2563eb;
+  color:white;
+}
+
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.lesson-card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 5px 18px rgba(15,23,42,.05);
+}
+
+.lesson-card h3{
+  margin:0 0 8px;
+}
+
+.lesson-card p{
+  color:#667085;
+  line-height:1.55;
+  min-height:65px;
+}
+
+.lesson-card button{
+  width:100%;
+}
+
+#lessonView{
+  display:none;
+}
+
+.lesson{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  border:1px solid #e5e7eb;
+}
+
+.lesson h1{
+  font-size:34px;
+  margin:15px 0;
+}
+
+.lesson h2{
+  margin-top:30px;
+}
+
+.lesson p,
+.lesson li{
+  line-height:1.7;
+}
+
+.formula{
+  background:#eff6ff;
+  border-left:4px solid #2563eb;
+  padding:15px;
+  border-radius:8px;
+  margin:15px 0;
+  font-family:monospace;
+}
+
+.example{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  padding:18px;
+  border-radius:10px;
+  margin:15px 0;
+}
+
+.video{
+  margin:20px 0;
+  background:#111827;
+  padding:10px;
+  border-radius:12px;
+}
+
+.video iframe{
+  width:100%;
+  height:400px;
+  border:0;
+  border-radius:8px;
+}
+
+.resources{
+  margin-top:25px;
+}
+
+.resource{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:15px;
+  margin:10px 0;
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+}
+
+.locked{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  padding:15px;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+.complete{
+  margin-top:25px;
+  background:#16a34a;
+  color:white;
+  width:100%;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#64748b;
+}
+
+@media(max-width:850px){
+  .lesson-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .lesson-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  .video iframe{
+    height:230px;
+  }
+
+  .resource{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .header-email{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    StudyPro <span>SA</span>
+  </div>
+
+  <div class="header-right">
+
+    <span id="userEmail" class="header-email">
+      Student
+    </span>
+
+    <button id="logoutButton" class="dark">
+      Log out
+    </button>
+
+  </div>
+
+</header>
+
+
+<div class="container">
+
+  <div id="courseView">
+
+    <div class="hero">
+
+      <h1>Grade 12 Physical Sciences</h1>
+
+      <p>
+        Access structured Physics and Chemistry lessons,
+        worked examples, videos, formulas and downloadable
+        study resources.
+      </p>
+
+    </div>
+
+
+    <div class="tabs">
+
+      <button
+        class="tab active"
+        onclick="showSubject('physics',this)">
+        ⚡ Physics
+      </button>
+
+      <button
+        class="tab"
+        onclick="showSubject('chemistry',this)">
+        🧪 Chemistry
+      </button>
+
+    </div>
+
+
+    <div
+      id="physicsLessons"
+      class="lesson-grid">
+    </div>
+
+
+    <div
+      id="chemistryLessons"
+      class="lesson-grid"
+      style="display:none">
+    </div>
+
+  </div>
+
+
+  <div id="lessonView">
+
+    <div class="lesson">
+
+      <button
+        class="light"
+        onclick="backToLessons()">
+        ← Back to lessons
+      </button>
+
+      <div id="lessonContent"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<footer>
+  StudyPro SA © 2026 • Grade 12 Physical Sciences
+</footer>
+
+
+<script type="module">
+
+/* =========================================================
+   FIREBASE
+========================================================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyAGlAUzxjZ7UlQTrh6JNW4L_C5JknFdA08",
+
+  authDomain:
+  "study-pro-sa.firebaseapp.com",
+
+  projectId:
+  "study-pro-sa",
+
+  storageBucket:
+  "study-pro-sa.firebasestorage.app",
+
+  messagingSenderId:
+  "1043280089865",
+
+  appId:
+  "1:1043280089865:web:243db4f82a3ef818b279d8",
+
+  measurementId:
+  "G-YNKK9S7869"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+onAuthStateChanged(auth,user=>{
+
+  if(user){
+
+    document.getElementById("userEmail").textContent =
+      user.email || "Student";
+
+  }else{
+
+    window.location.href="index.html";
+
+  }
+
+});
+
+
+document
+.getElementById("logoutButton")
+.addEventListener("click",async()=>{
+
+  await signOut(auth);
+
+  window.location.href="index.html";
+
+});
+
+
+/* =========================================================
+   LESSON DATA
+========================================================= */
+
+const physicsLessons=[
+
+{
+id:"motion",
+title:"Motion in One Dimension",
+description:"Displacement, velocity, acceleration and motion graphs.",
+video:"https://www.youtube.com/embed/ZM8ECpBuQYE",
+pdf:"#"
+},
+
+{
+id:"vectors",
+title:"Vectors",
+description:"Vector quantities, components and resultant vectors.",
+video:"https://www.youtube.com/embed/fNk_zzaMoSs",
+pdf:"#"
+},
+
+{
+id:"newton",
+title:"Newton's Laws",
+description:"Newton's laws of motion and free-body diagrams.",
+video:"https://www.youtube.com/embed/kKKM8Y-u7ds",
+pdf:"#"
+},
+
+{
+id:"momentum",
+title:"Momentum and Impulse",
+description:"Momentum, impulse and conservation of momentum.",
+video:"https://www.youtube.com/embed/pTqL9Q0f8nM",
+pdf:"#"
+},
+
+{
+id:"work",
+title:"Work, Energy and Power",
+description:"Work done, kinetic energy, potential energy and power.",
+video:"https://www.youtube.com/embed/w4QFJb9a8vo",
+pdf:"#"
+},
+
+{
+id:"waves",
+title:"Waves and Sound",
+description:"Wave properties, frequency, wavelength and sound.",
+video:"https://www.youtube.com/embed/1Y8w4bL5L4M",
+pdf:"#"
+},
+
+{
+id:"electrostatics",
+title:"Electrostatics",
+description:"Electric charge, Coulomb's law and electric fields.",
+video:"https://www.youtube.com/embed/8H4w3c7X4vM",
+pdf:"#"
+},
+
+{
+id:"circuits",
+title:"Electric Circuits",
+description:"Current, voltage, resistance and circuit calculations.",
+video:"https://www.youtube.com/embed/1goL9J7jL4Y",
+pdf:"#"
+}
+
+];
+
+
+const chemistryLessons=[
+
+{
+id:"organic",
+title:"Organic Chemistry",
+description:"Organic compounds, functional groups and reactions.",
+video:"https://www.youtube.com/embed/bka20Q9TN6M",
+pdf:"#"
+},
+
+{
+id:"rates",
+title:"Chemical Reaction Rates",
+description:"Factors affecting reaction rate and reaction profiles.",
+video:"https://www.youtube.com/embed/6xfY8J6Xh6k",
+pdf:"#"
+},
+
+{
+id:"equilibrium",
+title:"Chemical Equilibrium",
+description:"Dynamic equilibrium and Le Chatelier's principle.",
+video:"https://www.youtube.com/embed/4G71vJf5Y7E",
+pdf:"#"
+},
+
+{
+id:"acids",
+title:"Acids and Bases",
+description:"Acids, bases, pH and neutralisation.",
+video:"https://www.youtube.com/embed/ANi709MYnWg",
+pdf:"#"
+},
+
+{
+id:"electrochem",
+title:"Electrochemical Reactions",
+description:"Oxidation, reduction and electrochemical cells.",
+video:"https://www.youtube.com/embed/8R2v7k6JQY8",
+pdf:"#"
+},
+
+{
+id:"stoichiometry",
+title:"Stoichiometry",
+description:"Moles, molar mass and chemical calculations.",
+video:"https://www.youtube.com/embed/7Cfq0ilw7E4",
+pdf:"#"
+}
+
+];
+
+
+/* =========================================================
+   RENDER LESSONS
+========================================================= */
+
+function renderLessons(list,containerId){
+
+  const container=
+    document.getElementById(containerId);
+
+  container.innerHTML="";
+
+  list.forEach(lesson=>{
+
+    const card=document.createElement("div");
+
+    card.className="lesson-card";
+
+    card.innerHTML=`
+
+      <div style="font-size:28px">
+        📘
+      </div>
+
+      <h3>${lesson.title}</h3>
+
+      <p>${lesson.description}</p>
+
+      <button
+        class="primary"
+        onclick="openLesson('${lesson.id}')">
+        Start Lesson →
+      </button>
+
+    `;
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+renderLessons(
+  physicsLessons,
+  "physicsLessons"
+);
+
+renderLessons(
+  chemistryLessons,
+  "chemistryLessons"
+);
+
+
+/* =========================================================
+   SUBJECT SWITCH
+========================================================= */
+
+window.showSubject=function(subject,button){
+
+  document
+  .querySelectorAll(".tab")
+  .forEach(tab=>{
+    tab.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+
+  if(subject==="physics"){
+
+    document.getElementById("physicsLessons").style.display="grid";
+
+    document.getElementById("chemistryLessons").style.display="none";
+
+  }else{
+
+    document.getElementById("physicsLessons").style.display="none";
+
+    document.getElementById("chemistryLessons").style.display="grid";
+
+  }
+
+};
+
+
+/* =========================================================
+   OPEN LESSON
+========================================================= */
+
+window.openLesson=function(id){
+
+  let lesson=
+    physicsLessons.find(x=>x.id===id);
+
+  if(!lesson){
+
+    lesson=
+      chemistryLessons.find(x=>x.id===id);
+
+  }
+
+  if(!lesson)return;
+
+
+  document.getElementById("courseView").style.display="none";
+
+  document.getElementById("lessonView").style.display="block";
+
+
+  document.getElementById("lessonContent").innerHTML=`
+
+    <span style="
+      display:inline-block;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+    ">
+      GRADE 12 PHYSICAL SCIENCES
+    </span>
+
+
+    <h1>
+      ${lesson.title}
+    </h1>
+
+
+    <p>
+      ${lesson.description}
+    </p>
+
+
+    <h2>🎥 Lesson Video</h2>
+
+    <div class="video">
+
+      <iframe
+        src="${lesson.video}"
+        title="${lesson.title} video"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+
+    <h2>📖 Lesson Notes</h2>
+
+
+    <p>
+      This lesson introduces the key concepts required
+      for Grade 12 Physical Sciences. Study each section
+      carefully and practise the worked examples.
+    </p>
+
+
+    <div class="formula">
+
+      IMPORTANT FORMULA
+
+      <br><br>
+
+      Always identify the known quantities first,
+      select the correct equation, substitute values
+      with units and check your final answer.
+
+    </div>
+
+
+    <h2>🧮 Worked Example</h2>
+
+    <div class="example">
+
+      <strong>Example:</strong>
+
+      <p>
+        A student should first identify the information
+        provided in the question, determine what is being
+        asked, choose the appropriate equation and then
+        calculate the answer.
+      </p>
+
+      <div class="formula">
+        Given → Formula → Substitution → Answer + Unit
+      </div>
+
+    </div>
+
+
+    <h2>📝 Study Tips</h2>
+
+    <ul>
+
+      <li>Read the question carefully.</li>
+
+      <li>Write down the given information.</li>
+
+      <li>Identify the required quantity.</li>
+
+      <li>Select the correct formula.</li>
+
+      <li>Show all calculations.</li>
+
+      <li>Always include the correct unit.</li>
+
+    </ul>
+
+
+    <div class="resources">
+
+      <h2>📚 Lesson Resources</h2>
+
+      <div class="resource">
+
+        <div>
+          <strong>Lesson PDF</strong>
+
+          <br>
+
+          <small>
+            Download the printable lesson notes.
+          </small>
+        </div>
+
+        <a
+          class="button primary"
+          href="${lesson.pdf}"
+          target="_blank"
+          onclick="pdfMessage(event)">
+          Download PDF
+        </a>
+
+      </div>
+
+
+      <div class="locked">
+
+        🔒 Premium Resource Area
+
+        <br><br>
+
+        Additional worksheets, tests and examination
+        preparation materials can be added here for
+        subscribed StudyPro SA students.
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="complete"
+      onclick="completeLesson('${lesson.id}')">
+
+      ✓ Mark Lesson Complete
+
+    </button>
+
+  `;
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+};
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+window.backToLessons=function(){
+
+  document.getElementById("lessonView").style.display="none";
+
+  document.getElementById("courseView").style.display="block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+};
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+window.completeLesson=function(id){
+
+  let completed=
+    JSON.parse(
+      localStorage.getItem("studypro_completed") || "[]"
+    );
+
+  if(!completed.includes(id)){
+
+    completed.push(id);
+
+    localStorage.setItem(
+      "studypro_completed",
+      JSON.stringify(completed)
+    );
+
+  }
+
+  alert(
+    "Lesson completed successfully! ✓"
+  );
+
+};
+
+
+/* =========================================================
+   PDF PLACEHOLDER
+========================================================= */
+
+window.pdfMessage=function(event){
+
+  if(event.currentTarget.getAttribute("href")==="#"){
+
+    event.preventDefault();
+
+    alert(
+      "The PDF link is ready. Replace the # in the lesson data with your actual PDF file link."
+    );
+
+  }
+
+};
+
+</script>
+
+</body>
+  </html>
