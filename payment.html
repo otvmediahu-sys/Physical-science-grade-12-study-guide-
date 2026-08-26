@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="StudyPro SA subscription payment page for Grade 12 Physical Sciences.">
+
+<title>StudyPro SA | Subscribe</title>
+
+<style>
+:root{
+  --navy:#0b1220;
+  --navy2:#111827;
+  --blue:#2563eb;
+  --blue2:#1d4ed8;
+  --cyan:#06b6d4;
+  --green:#16a34a;
+  --bg:#f4f7fb;
+  --white:#ffffff;
+  --text:#172033;
+  --muted:#667085;
+  --border:#e5e7eb;
+  --danger:#dc2626;
+  --shadow:0 15px 45px rgba(15,23,42,.10);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
+  "Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  text-decoration:none;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* HEADER */
+
+header{
+  height:70px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#38bdf8;
+}
+
+.back{
+  color:#dbeafe;
+  font-weight:700;
+}
+
+.back:hover{
+  color:#fff;
+}
+
+/* MAIN */
+
+main{
+  min-height:calc(100vh - 70px);
+  padding:35px 20px 60px;
+}
+
+.container{
+  width:min(1050px,100%);
+  margin:auto;
+}
+
+/* TITLE */
+
+.page-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.page-title h1{
+  font-size:38px;
+  margin:0 0 10px;
+}
+
+.page-title p{
+  color:var(--muted);
+  margin:0;
+  line-height:1.6;
+}
+
+/* LAYOUT */
+
+.payment-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:25px;
+}
+
+/* SUMMARY */
+
+.summary{
+  background:linear-gradient(135deg,#0b1220,#12356b);
+  color:#fff;
+  border-radius:20px;
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+
+.summary h2{
+  margin-top:0;
+}
+
+.plan-name{
+  font-size:28px;
+  font-weight:900;
+  margin:15px 0 5px;
+}
+
+.price{
+  font-size:42px;
+  font-weight:900;
+  margin:10px 0;
+}
+
+.price small{
+  font-size:15px;
+  font-weight:500;
+  color:#cbd5e1;
+}
+
+.features{
+  list-style:none;
+  padding:0;
+  margin:25px 0 0;
+}
+
+.features li{
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.features li:last-child{
+  border-bottom:0;
+}
+
+/* PAYMENT CARD */
+
+.payment-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:var(--shadow);
+}
+
+.payment-card h2{
+  margin-top:0;
+}
+
+.field{
+  margin:17px 0;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #d7dce5;
+  border-radius:10px;
+  outline:none;
+  background:#fff;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.12);
+}
+
+/* PAYMENT METHODS */
+
+.methods{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.method{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+  background:#fff;
+  font-weight:800;
+}
+
+.method.active{
+  border:2px solid var(--blue);
+  background:#eff6ff;
+}
+
+.method-icon{
+  font-size:25px;
+  display:block;
+  margin-bottom:5px;
+}
+
+/* BUTTON */
+
+.pay-button{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:15px;
+  background:var(--blue);
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  margin-top:10px;
+}
+
+.pay-button:hover{
+  background:var(--blue2);
+}
+
+.pay-button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+/* SECURITY */
+
+.security{
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  color:#166534;
+  padding:14px;
+  border-radius:10px;
+  margin-top:18px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* MESSAGE */
+
+.message{
+  display:none;
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+  line-height:1.5;
+}
+
+.message.success{
+  display:block;
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  color:#166534;
+}
+
+.message.error{
+  display:block;
+  background:#fef2f2;
+  border:1px solid #fecaca;
+  color:#991b1b;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  color:#94a3b8;
+  margin-top:35px;
+  font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .payment-grid{
+    grid-template-columns:1fr;
+  }
+
+  .page-title h1{
+    font-size:30px;
+  }
+
+  .payment-card,
+  .summary{
+    padding:22px;
+  }
+}
+
+@media(max-width:500px){
+
+  header{
+    padding:0 15px;
+  }
+
+  .logo{
+    font-size:19px;
+  }
+
+  .methods{
+    grid-template-columns:1fr;
+  }
+
+  .price{
+    font-size:35px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+  <div class="logo">
+    StudyPro <span>SA</span>
+  </div>
+
+  <a href="pricing.html" class="back">
+    ← Back to Pricing
+  </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main>
+
+<div class="container">
+
+  <div class="page-title">
+
+    <h1>Complete Your Subscription</h1>
+
+    <p>
+      Get access to the StudyPro SA Grade 12 Physical Sciences
+      learning platform.
+    </p>
+
+  </div>
+
+
+  <div class="payment-grid">
+
+
+    <!-- PLAN SUMMARY -->
+
+    <div class="summary">
+
+      <div style="font-size:13px;color:#93c5fd;font-weight:800;">
+        SELECTED STUDY PLAN
+      </div>
+
+      <div id="planName" class="plan-name">
+        StudyPro SA Premium
+      </div>
+
+      <div id="planPrice" class="price">
+        R99
+        <small>/ month</small>
+      </div>
+
+      <div style="color:#dbeafe;line-height:1.6;">
+        Everything you need to prepare for
+        Grade 12 Physical Sciences.
+      </div>
+
+
+      <ul class="features">
+
+        <li>✓ Physics lessons</li>
+
+        <li>✓ Chemistry lessons</li>
+
+        <li>✓ Worked examples</li>
+
+        <li>✓ Formula revision</li>
+
+        <li>✓ Practice quizzes</li>
+
+        <li>✓ Video lessons</li>
+
+        <li>✓ Downloadable study resources</li>
+
+        <li>✓ Progress tracking</li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- PAYMENT FORM -->
+
+    <div class="payment-card">
+
+      <h2>Payment Details</h2>
+
+      <p class="muted">
+        Enter your details below to continue.
+      </p>
+
+
+      <form id="paymentForm">
+
+
+        <div class="field">
+
+          <label for="name">
+            Full name
+          </label>
+
+          <input
+            id="name"
+            type="text"
+            placeholder="Your full name"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="email">
+            Email address
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="phone">
+            Mobile number
+          </label>
+
+          <input
+            id="phone"
+            type="tel"
+            placeholder="e.g. 071 234 5678"
+            required
+          >
+
+        </div>
+
+
+        <label style="
+          display:block;
+          font-size:13px;
+          font-weight:800;
+          margin-bottom:8px;
+        ">
+          Payment method
+        </label>
+
+
+        <div class="methods">
+
+
+          <div
+            class="method active"
+            data-method="card"
+          >
+
+            <span class="method-icon">💳</span>
+
+            Card
+
+          </div>
+
+
+          <div
+            class="method"
+            data-method="eft"
+          >
+
+            <span class="method-icon">🏦</span>
+
+            EFT
+
+          </div>
+
+
+        </div>
+
+
+        <input
+          type="hidden"
+          id="paymentMethod"
+          value="card"
+        >
+
+
+        <button
+          id="payButton"
+          type="submit"
+          class="pay-button"
+        >
+          Continue to Secure Payment
+        </button>
+
+
+        <div
+          id="message"
+          class="message"
+        ></div>
+
+
+        <div class="security">
+
+          🔒 <strong>Secure payment</strong><br>
+
+          Your payment will be processed through the
+          payment provider connected to your StudyPro SA
+          account. Do not enter banking passwords on this page.
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    StudyPro SA © 2026 · Grade 12 Physical Sciences
+
+  </footer>
+
+</div>
+
+</main>
+
+
+<script>
+
+/*
+=========================================================
+STUDYPRO SA PAYMENT PAGE
+=========================================================
+
+IMPORTANT:
+
+This page is the payment interface.
+
+The actual payment gateway must be connected separately.
+
+For South Africa, you can later connect:
+
+• PayFast
+• Yoco
+• Peach Payments
+• PayGate
+• Paystack
+
+Do NOT put private API keys or secret keys in this file.
+=========================================================
+*/
+
+
+/* GET PLAN FROM URL */
+
+const params = new URLSearchParams(window.location.search);
+
+const plan = params.get("plan");
+
+const planName = document.getElementById("planName");
+const planPrice = document.getElementById("planPrice");
+
+
+/*
+Change the displayed plan depending
+on what was selected on pricing.html.
+*/
+
+if(plan === "basic"){
+
+  planName.textContent =
+    "StudyPro SA Basic";
+
+  planPrice.innerHTML =
+    "R49 <small>/ month</small>";
+
+}
+
+else if(plan === "premium"){
+
+  planName.textContent =
+    "StudyPro SA Premium";
+
+  planPrice.innerHTML =
+    "R99 <small>/ month</small>";
+
+}
+
+else if(plan === "annual"){
+
+  planName.textContent =
+    "StudyPro SA Annual";
+
+  planPrice.innerHTML =
+    "R999 <small>/ year</small>";
+
+}
+
+
+/* PAYMENT METHOD */
+
+const methods =
+document.querySelectorAll(".method");
+
+const paymentMethod =
+document.getElementById("paymentMethod");
+
+
+methods.forEach(method => {
+
+  method.addEventListener("click", () => {
+
+    methods.forEach(item => {
+      item.classList.remove("active");
+    });
+
+    method.classList.add("active");
+
+    paymentMethod.value =
+      method.dataset.method;
+
+  });
+
+});
+
+
+/* PAYMENT FORM */
+
+const paymentForm =
+document.getElementById("paymentForm");
+
+const message =
+document.getElementById("message");
+
+const payButton =
+document.getElementById("payButton");
+
+
+paymentForm.addEventListener("submit", function(event){
+
+  event.preventDefault();
+
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const method =
+    paymentMethod.value;
+
+
+  message.className =
+    "message";
+
+  message.textContent = "";
+
+
+  if(!name || !email || !phone){
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Please complete all required fields.";
+
+    return;
+
+  }
+
+
+  payButton.disabled = true;
+
+  payButton.textContent =
+    "Preparing secure payment...";
+
+
+  /*
+  TEMPORARY PAYMENT FLOW
+
+  The real payment provider will be connected here.
+
+  We intentionally do not fake a successful payment.
+  */
+
+
+  setTimeout(() => {
+
+    message.className =
+      "message success";
+
+    message.innerHTML =
+      "Your details have been captured. " +
+      "The secure payment gateway will be connected next.";
+
+
+    payButton.disabled = false;
+
+    payButton.textContent =
+      "Continue to Secure Payment";
+
+
+    /*
+    When the payment gateway is connected,
+    this section will redirect the customer
+    to the actual checkout.
+    */
+
+  },800);
+
+});
+
+</script>
+
+</body>
+</html>
