@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudyPro SA Grade 12 Physical Sciences Physics Lessons">
+<title>StudyPro SA | Grade 12 Physics</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+  --navy:#0b1220;
+  --blue:#2563eb;
+  --blue2:#1d4ed8;
+  --cyan:#06b6d4;
+  --bg:#f4f7fb;
+  --white:#fff;
+  --text:#172033;
+  --muted:#667085;
+  --border:#e5e7eb;
+  --green:#16a34a;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:15px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#38bdf8;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.email{
+  font-size:13px;
+  color:#dbeafe;
+  max-width:250px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+button,
+.button{
+  border:0;
+  border-radius:9px;
+  padding:11px 15px;
+  font-weight:800;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.primary{
+  background:var(--blue);
+  color:white;
+}
+
+.primary:hover{
+  background:var(--blue2);
+}
+
+.light{
+  background:white;
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 18px 50px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#0b1220,#12356b);
+  color:white;
+  padding:32px;
+  border-radius:20px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  margin:0 0 10px;
+  font-size:38px;
+}
+
+.hero p{
+  color:#dbeafe;
+  line-height:1.6;
+  max-width:800px;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.lesson-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 5px 18px rgba(15,23,42,.05);
+}
+
+.lesson-number{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#eff6ff;
+  color:var(--blue);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.lesson-card h3{
+  margin:0 0 8px;
+}
+
+.lesson-card p{
+  color:var(--muted);
+  line-height:1.55;
+  min-height:65px;
+}
+
+.lesson-card .button{
+  width:100%;
+  text-align:center;
+}
+
+#lessonArea{
+  display:none;
+}
+
+.lesson{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:26px;
+  box-shadow:0 8px 25px rgba(15,23,42,.06);
+}
+
+.lesson h1{
+  font-size:34px;
+  margin:18px 0 10px;
+}
+
+.lesson h2{
+  margin-top:30px;
+}
+
+.lesson p,
+.lesson li{
+  line-height:1.7;
+}
+
+.formula{
+  background:#eff6ff;
+  border-left:4px solid var(--blue);
+  padding:16px;
+  border-radius:8px;
+  margin:18px 0;
+  font-family:monospace;
+  overflow:auto;
+}
+
+.example{
+  background:#f8fafc;
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:12px;
+  margin:18px 0;
+}
+
+.video{
+  background:#111827;
+  padding:10px;
+  border-radius:13px;
+  margin:20px 0;
+}
+
+.video iframe{
+  width:100%;
+  height:420px;
+  border:0;
+  border-radius:8px;
+}
+
+.resources{
+  margin-top:30px;
+}
+
+.resource{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:15px;
+  border:1px solid var(--border);
+  background:#f8fafc;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.complete{
+  width:100%;
+  background:var(--green);
+  color:white;
+  margin-top:20px;
+}
+
+.notice{
+  padding:15px;
+  border-radius:10px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  margin-top:20px;
+}
+
+footer{
+  text-align:center;
+  color:#64748b;
+  padding:30px;
+}
+
+@media(max-width:850px){
+  .lesson-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .lesson-grid{
+    grid-template-columns:1fr;
+  }
+
+  .email{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:29px;
+  }
+
+  .video iframe{
+    height:230px;
+  }
+
+  .resource{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    StudyPro <span>SA</span>
+  </div>
+
+  <div class="header-right">
+
+    <span id="userEmail" class="email">
+      Student
+    </span>
+
+    <button id="logoutButton" class="light">
+      Log out
+    </button>
+
+  </div>
+
+</header>
+
+
+<div class="container">
+
+  <!-- COURSE LIST -->
+
+  <div id="courseArea">
+
+    <div class="hero">
+
+      <span class="badge">
+        GRADE 12 • PHYSICAL SCIENCES
+      </span>
+
+      <h1>⚡ Physics</h1>
+
+      <p>
+        Work through the Grade 12 Physics lessons,
+        watch the lesson videos, study the notes,
+        practise worked examples and track your progress.
+      </p>
+
+      <a href="lessons.html" class="button light">
+        ← All Lessons
+      </a>
+
+    </div>
+
+
+    <div class="lesson-grid" id="lessonGrid"></div>
+
+  </div>
+
+
+  <!-- INDIVIDUAL LESSON -->
+
+  <div id="lessonArea">
+
+    <div class="lesson">
+
+      <button
+        class="light"
+        onclick="backToCourse()">
+        ← Back to Physics
+      </button>
+
+      <div id="lessonContent"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<footer>
+  StudyPro SA © 2026 • Grade 12 Physical Sciences
+</footer>
+
+
+<script type="module">
+
+/* =========================================================
+   FIREBASE
+========================================================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyAGlAUzxjZ7UlQTrh6JNW4L_C5JknFdA08",
+
+  authDomain:
+  "study-pro-sa.firebaseapp.com",
+
+  projectId:
+  "study-pro-sa",
+
+  storageBucket:
+  "study-pro-sa.firebasestorage.app",
+
+  messagingSenderId:
+  "1043280089865",
+
+  appId:
+  "1:1043280089865:web:243db4f82a3ef818b279d8",
+
+  measurementId:
+  "G-YNKK9S7869"
+
+};
+
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+
+
+/* =========================================================
+   LOGIN CHECK
+========================================================= */
+
+onAuthStateChanged(auth,user=>{
+
+  if(user){
+
+    document.getElementById("userEmail").textContent =
+      user.email || "Student";
+
+  }else{
+
+    window.location.href="index.html";
+
+  }
+
+});
+
+
+document
+.getElementById("logoutButton")
+.addEventListener("click",async()=>{
+
+  try{
+
+    await signOut(auth);
+
+    window.location.href="index.html";
+
+  }catch(error){
+
+    alert("Unable to log out. Please try again.");
+
+  }
+
+});
+
+
+/* =========================================================
+   PHYSICS LESSONS
+========================================================= */
+
+const lessons=[
+
+{
+id:"motion",
+number:1,
+title:"Motion in One Dimension",
+description:
+"Displacement, velocity, acceleration and motion graphs.",
+video:"https://www.youtube.com/embed/ZM8ECpBuQYE",
+pdf:"#",
+content:`
+
+<h1>Motion in One Dimension</h1>
+
+<p>
+Motion describes the change in position of an object with
+respect to time.
+</p>
+
+<h2>Key Concepts</h2>
+
+<ul>
+<li>Position</li>
+<li>Displacement</li>
+<li>Distance</li>
+<li>Velocity</li>
+<li>Speed</li>
+<li>Acceleration</li>
+</ul>
+
+<div class="formula">
+v = Δx / Δt
+<br><br>
+a = Δv / Δt
+</div>
+
+<h2>Worked Example</h2>
+
+<div class="example">
+
+<p>
+A car changes its velocity from 10 m·s⁻¹ to
+20 m·s⁻¹ in 5 seconds.
+</p>
+
+<div class="formula">
+a = (v₂ - v₁) / Δt
+<br><br>
+a = (20 - 10) / 5
+<br><br>
+a = 2 m·s⁻²
+</div>
+
+</div>
+
+<h2>Study Tip</h2>
+
+<p>
+Always write down the known values before selecting
+an equation.
+</p>
+
+`
+
+},
+
+{
+id:"vectors",
+number:2,
+title:"Vectors",
+description:
+"Vector quantities, components and resultant vectors.",
+video:"https://www.youtube.com/embed/fNk_zzaMoSs",
+pdf:"#",
+content:`
+
+<h1>Vectors</h1>
+
+<p>
+A vector quantity has both magnitude and direction.
+</p>
+
+<h2>Examples of Vectors</h2>
+
+<ul>
+<li>Displacement</li>
+<li>Velocity</li>
+<li>Acceleration</li>
+<li>Force</li>
+<li>Momentum</li>
+</ul>
+
+<div class="formula">
+Rₓ = Aₓ + Bₓ
+<br><br>
+Rᵧ = Aᵧ + Bᵧ
+</div>
+
+<h2>Important</h2>
+
+<p>
+Scalar quantities have magnitude only, while vector
+quantities have magnitude and direction.
+</p>
+
+`
+
+},
+
+{
+id:"newton",
+number:3,
+title:"Newton's Laws",
+description:
+"Newton's laws of motion and free-body diagrams.",
+video:"https://www.youtube.com/embed/kKKM8Y-u7ds",
+pdf:"#",
+content:`
+
+<h1>Newton's Laws of Motion</h1>
+
+<h2>Newton's First Law</h2>
+
+<p>
+An object remains at rest or continues moving with
+constant velocity unless acted upon by a net external force.
+</p>
+
+<h2>Newton's Second Law</h2>
+
+<div class="formula">
+F<sub>net</sub> = ma
+</div>
+
+<h2>Newton's Third Law</h2>
+
+<p>
+When object A exerts a force on object B, object B
+exerts an equal magnitude force in the opposite direction
+on object A.
+</p>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+If a 5 kg object accelerates at 3 m·s⁻²:
+</p>
+
+<div class="formula">
+F = ma
+<br>
+F = 5 × 3
+<br>
+F = 15 N
+</div>
+
+</div>
+
+`
+
+},
+
+{
+id:"momentum",
+number:4,
+title:"Momentum and Impulse",
+description:
+"Momentum, impulse and conservation of momentum.",
+video:"https://www.youtube.com/embed/pTqL9Q0f8nM",
+pdf:"#",
+content:`
+
+<h1>Momentum and Impulse</h1>
+
+<p>
+Momentum is the product of an object's mass and velocity.
+</p>
+
+<div class="formula">
+p = mv
+</div>
+
+<h2>Impulse</h2>
+
+<div class="formula">
+Impulse = FΔt
+<br><br>
+Impulse = Δp
+</div>
+
+<h2>Conservation of Momentum</h2>
+
+<p>
+For an isolated system, total momentum before an interaction
+is equal to total momentum after the interaction.
+</p>
+
+`
+
+},
+
+{
+id:"work",
+number:5,
+title:"Work, Energy and Power",
+description:
+"Work done, kinetic energy, potential energy and power.",
+video:"https://www.youtube.com/embed/w4QFJb9a8vo",
+pdf:"#",
+content:`
+
+<h1>Work, Energy and Power</h1>
+
+<h2>Work</h2>
+
+<div class="formula">
+W = FΔx cosθ
+</div>
+
+<h2>Kinetic Energy</h2>
+
+<div class="formula">
+Eₖ = ½mv²
+</div>
+
+<h2>Gravitational Potential Energy</h2>
+
+<div class="formula">
+Eₚ = mgh
+</div>
+
+<h2>Power</h2>
+
+<div class="formula">
+P = W / Δt
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+A 2 kg object moves at 5 m·s⁻¹.
+</p>
+
+<div class="formula">
+Eₖ = ½(2)(5²)
+<br>
+Eₖ = 25 J
+</div>
+
+</div>
+
+`
+
+},
+
+{
+id:"waves",
+number:6,
+title:"Waves and Sound",
+description:
+"Wave properties, frequency, wavelength and sound.",
+video:"https://www.youtube.com/embed/1Y8w4bL5L4M",
+pdf:"#",
+content:`
+
+<h1>Waves and Sound</h1>
+
+<p>
+A wave transfers energy from one location to another
+without the net transfer of matter.
+</p>
+
+<h2>Important Wave Quantities</h2>
+
+<ul>
+<li>Wavelength</li>
+<li>Frequency</li>
+<li>Period</li>
+<li>Amplitude</li>
+<li>Wave speed</li>
+</ul>
+
+<div class="formula">
+v = fλ
+</div>
+
+<h2>Sound</h2>
+
+<p>
+Sound is a mechanical wave that requires a medium through
+which to travel.
+</p>
+
+`
+
+},
+
+{
+id:"electrostatics",
+number:7,
+title:"Electrostatics",
+description:
+"Electric charge, Coulomb's law and electric fields.",
+video:"https://www.youtube.com/embed/8H4w3c7X4vM",
+pdf:"#",
+content:`
+
+<h1>Electrostatics</h1>
+
+<p>
+Electrostatics deals with electric charges at rest.
+</p>
+
+<h2>Coulomb's Law</h2>
+
+<div class="formula">
+F = k|q₁q₂| / r²
+</div>
+
+<h2>Electric Field</h2>
+
+<div class="formula">
+E = F / q
+</div>
+
+<p>
+Like charges repel and unlike charges attract.
+</p>
+
+`
+
+},
+
+{
+id:"circuits",
+number:8,
+title:"Electric Circuits",
+description:
+"Current, voltage, resistance and circuit calculations.",
+video:"https://www.youtube.com/embed/1goL9J7jL4Y",
+pdf:"#",
+content:`
+
+<h1>Electric Circuits</h1>
+
+<h2>Current</h2>
+
+<div class="formula">
+I = Q / Δt
+</div>
+
+<h2>Ohm's Law</h2>
+
+<div class="formula">
+V = IR
+</div>
+
+<h2>Electrical Power</h2>
+
+<div class="formula">
+P = VI
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+A circuit has a resistance of 4 Ω and a current of
+3 A.
+</p>
+
+<div class="formula">
+V = IR
+<br>
+V = 3 × 4
+<br>
+V = 12 V
+</div>
+
+</div>
+
+`
+
+}
+
+];
+
+
+/* =========================================================
+   RENDER LESSON CARDS
+========================================================= */
+
+function renderLessons(){
+
+  const grid=document.getElementById("lessonGrid");
+
+  grid.innerHTML="";
+
+  lessons.forEach(lesson=>{
+
+    const card=document.createElement("div");
+
+    card.className="lesson-card";
+
+    card.innerHTML=`
+
+      <div class="lesson-number">
+        ${lesson.number}
+      </div>
+
+      <h3>
+        ${lesson.title}
+      </h3>
+
+      <p>
+        ${lesson.description}
+      </p>
+
+      <button
+        class="primary"
+        onclick="openLesson('${lesson.id}')">
+        Start Lesson →
+      </button>
+
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+renderLessons();
+
+
+/* =========================================================
+   OPEN LESSON
+========================================================= */
+
+window.openLesson=function(id){
+
+  const lesson=
+    lessons.find(item=>item.id===id);
+
+  if(!lesson)return;
+
+  document.getElementById("courseArea").style.display="none";
+
+  document.getElementById("lessonArea").style.display="block";
+
+  document.getElementById("lessonContent").innerHTML=`
+
+    <span class="badge"
+      style="
+      background:#eff6ff;
+      color:#1d4ed8;
+      ">
+      PHYSICS LESSON ${lesson.number}
+    </span>
+
+    ${lesson.content}
+
+    <h2>🎥 Lesson Video</h2>
+
+    <div class="video">
+
+      <iframe
+        src="${lesson.video}"
+        title="${lesson.title}"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <div class="resources">
+
+      <h2>📄 Lesson Resources</h2>
+
+      <div class="resource">
+
+        <div>
+
+          <strong>
+            ${lesson.title} — PDF Notes
+          </strong>
+
+          <br>
+
+          <small>
+            Printable lesson notes.
+          </small>
+
+        </div>
+
+        <a
+          href="${lesson.pdf}"
+          class="button primary"
+          target="_blank"
+          onclick="pdfNotice(event)">
+          Download PDF
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="notice">
+
+      🔐 Premium StudyPro SA
+
+      <br><br>
+
+      Additional worksheets, examination questions,
+      revision packs and assessments can be added to
+      this lesson for subscribed students.
+
+    </div>
+
+    <button
+      class="complete"
+      onclick="markComplete('${lesson.id}')">
+
+      ✓ Mark Lesson Complete
+
+    </button>
+
+  `;
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+};
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+window.backToCourse=function(){
+
+  document.getElementById("lessonArea").style.display="none";
+
+  document.getElementById("courseArea").style.display="block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+};
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+window.markComplete=function(id){
+
+  let completed=
+    JSON.parse(
+      localStorage.getItem("studypro_completed") || "[]"
+    );
+
+  if(!completed.includes(id)){
+
+    completed.push(id);
+
+    localStorage.setItem(
+      "studypro_completed",
+      JSON.stringify(completed)
+    );
+
+  }
+
+  alert(
+    "Lesson completed successfully ✓"
+  );
+
+};
+
+
+/* =========================================================
+   PDF
+========================================================= */
+
+window.pdfNotice=function(event){
+
+  const link=
+    event.currentTarget.getAttribute("href");
+
+  if(link==="#"){
+
+    event.preventDefault();
+
+    alert(
+      "PDF placeholder: replace the # in the lesson data with your actual PDF file link."
+    );
+
+  }
+
+};
+
+</script>
+
+</body>
+  </html>
