@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudyPro SA Grade 12 Physical Sciences Student Dashboard">
+<title>StudyPro SA | Student Dashboard</title>
+
+<style>
+:root{
+  --navy:#0b1220;
+  --navy2:#111827;
+  --blue:#2563eb;
+  --blue2:#1d4ed8;
+  --cyan:#06b6d4;
+  --green:#16a34a;
+  --bg:#f4f7fb;
+  --white:#fff;
+  --text:#172033;
+  --muted:#667085;
+  --border:#e5e7eb;
+  --danger:#dc2626;
+  --shadow:0 12px 35px rgba(15,23,42,.08);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
+  "Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  text-decoration:none;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* HEADER */
+
+.topbar{
+  height:68px;
+  background:var(--navy);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#38bdf8;
+}
+
+.top-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.user-email{
+  font-size:13px;
+  color:#dbeafe;
+  max-width:280px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.logout{
+  border:1px solid rgba(255,255,255,.25);
+  background:transparent;
+  color:white;
+  border-radius:9px;
+  padding:9px 13px;
+  font-weight:700;
+}
+
+/* LAYOUT */
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 68px);
+}
+
+.sidebar{
+  width:245px;
+  background:var(--navy2);
+  color:#cbd5e1;
+  position:fixed;
+  top:68px;
+  bottom:0;
+  overflow:auto;
+  padding:18px 13px;
+}
+
+.nav-title{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#64748b;
+  padding:10px 12px;
+}
+
+.nav-btn{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#cbd5e1;
+  text-align:left;
+  padding:12px;
+  border-radius:9px;
+  margin:2px 0;
+  font-weight:650;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#1e293b;
+  color:white;
+}
+
+.content{
+  margin-left:245px;
+  width:calc(100% - 245px);
+  padding:28px;
+  max-width:1550px;
+}
+
+/* WELCOME */
+
+.welcome{
+  background:linear-gradient(135deg,#0b1220,#12356b);
+  color:white;
+  border-radius:20px;
+  padding:32px;
+  box-shadow:var(--shadow);
+}
+
+.welcome h1{
+  margin:0 0 8px;
+  font-size:clamp(28px,4vw,43px);
+}
+
+.welcome p{
+  margin:0;
+  color:#dbeafe;
+  line-height:1.6;
+  max-width:760px;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.12);
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+/* SECTIONS */
+
+.section{
+  margin-top:28px;
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.section-header h2{
+  margin:0;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+/* CARDS */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.card h3{
+  margin:8px 0;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.55;
+  font-size:14px;
+}
+
+.icon{
+  font-size:30px;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 15px;
+  font-weight:800;
+}
+
+.btn-primary{
+  background:var(--blue);
+  color:white;
+}
+
+.btn-primary:hover{
+  background:var(--blue2);
+}
+
+.btn-light{
+  background:#f8fafc;
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+/* PROGRESS */
+
+.progress-wrap{
+  height:10px;
+  background:#e5e7eb;
+  border-radius:99px;
+  overflow:hidden;
+  margin:10px 0;
+}
+
+.progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  transition:.3s;
+}
+
+/* TOPICS */
+
+.topic-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+}
+
+.topic{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:18px;
+}
+
+.topic h3{
+  margin:0 0 7px;
+}
+
+.topic p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+
+.topic button{
+  margin-top:8px;
+}
+
+/* SEARCH */
+
+.search{
+  width:100%;
+  max-width:400px;
+  padding:11px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  outline:none;
+}
+
+/* LESSON */
+
+.lesson{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:26px;
+  box-shadow:var(--shadow);
+}
+
+.lesson h1{
+  font-size:32px;
+  margin:15px 0;
+}
+
+.lesson h2{
+  margin-top:28px;
+}
+
+.lesson p,
+.lesson li{
+  line-height:1.7;
+}
+
+.formula{
+  background:#eff6ff;
+  border-left:4px solid var(--blue);
+  padding:15px;
+  border-radius:8px;
+  margin:15px 0;
+  font-family:monospace;
+  overflow:auto;
+}
+
+.note{
+  background:#fffbeb;
+  border:1px solid #fde68a;
+  padding:15px;
+  border-radius:10px;
+  margin:15px 0;
+}
+
+.example{
+  background:#f8fafc;
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:12px;
+  margin:15px 0;
+}
+
+/* VIDEO */
+
+.video{
+  background:#111827;
+  border-radius:14px;
+  padding:10px;
+  margin:20px 0;
+}
+
+.video iframe{
+  width:100%;
+  min-height:380px;
+  border:0;
+  border-radius:9px;
+}
+
+.video-placeholder{
+  min-height:260px;
+  display:grid;
+  place-items:center;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+/* RESOURCES */
+
+.resource{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:11px;
+  margin:10px 0;
+  background:#fff;
+}
+
+.resource-title{
+  font-weight:800;
+}
+
+.resource a{
+  color:var(--blue);
+  font-weight:800;
+}
+
+/* QUIZ */
+
+.quiz-question{
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin:14px 0;
+}
+
+.quiz-question label{
+  display:block;
+  padding:9px;
+  border-radius:7px;
+}
+
+.quiz-question label:hover{
+  background:#f8fafc;
+}
+
+.quiz-result{
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+  background:#f0fdf4;
+  color:#166534;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  color:#94a3b8;
+  padding:35px;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .topic-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:760px){
+
+  .topbar{
+    height:62px;
+  }
+
+  .sidebar{
+    position:sticky;
+    top:62px;
+    width:100%;
+    height:auto;
+    display:flex;
+    overflow-x:auto;
+    padding:8px;
+    z-index:50;
+  }
+
+  .layout{
+    display:block;
+  }
+
+  .content{
+    margin-left:0;
+    width:100%;
+    padding:16px;
+  }
+
+  .nav-title{
+    display:none;
+  }
+
+  .nav-btn{
+    white-space:nowrap;
+    width:auto;
+  }
+
+  .grid,
+  .topic-grid{
+    grid-template-columns:1fr;
+  }
+
+  .user-email{
+    display:none;
+  }
+
+  .section-header{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .video iframe{
+    min-height:220px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<header class="topbar">
+
+  <div class="logo">
+    StudyPro <span>SA</span>
+  </div>
+
+  <div class="top-right">
+
+    <span id="userEmail" class="user-email">
+      Student
+    </span>
+
+    <button id="logoutButton" class="logout">
+      Log out
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN LAYOUT
+===================================================== -->
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+  <div class="nav-title">
+    Learning
+  </div>
+
+  <button class="nav-btn active" data-page="home">
+    🏠 Dashboard
+  </button>
+
+  <button class="nav-btn" data-page="physics">
+    ⚡ Physics
+  </button>
+
+  <button class="nav-btn" data-page="chemistry">
+    🧪 Chemistry
+  </button>
+
+  <button class="nav-btn" data-page="practice">
+    📝 Practice
+  </button>
+
+  <button class="nav-btn" data-page="resources">
+    📚 Resources
+  </button>
+
+  <button class="nav-btn" data-page="progress">
+    📊 My Progress
+  </button>
+
+</aside>
+
+
+<!-- CONTENT -->
+
+<main class="content">
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section id="home" class="page">
+
+  <div class="welcome">
+
+    <span class="badge">
+      GRADE 12 • PREMIUM STUDENT AREA
+    </span>
+
+    <h1>
+      Welcome to StudyPro SA 👋
+    </h1>
+
+    <p>
+      Your complete Grade 12 Physical Sciences learning
+      dashboard. Choose a subject below and start studying.
+    </p>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="section-header">
+
+      <div>
+        <h2>Continue Learning</h2>
+
+        <div class="muted">
+          Choose a subject to begin.
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="grid">
+
+
+      <div class="card">
+
+        <div class="icon">⚡</div>
+
+        <h3>Physics</h3>
+
+        <p>
+          Mechanics, momentum, energy, waves,
+          electricity and magnetism.
+        </p>
+
+        <button
+          class="btn btn-primary"
+          data-open="physics"
+        >
+          Start Physics
+        </button>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🧪</div>
+
+        <h3>Chemistry</h3>
+
+        <p>
+          Chemical reactions, rates, equilibrium,
+          acids, bases and electrochemistry.
+        </p>
+
+        <button
+          class="btn btn-primary"
+          data-open="chemistry"
+        >
+          Start Chemistry
+        </button>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">📝</div>
+
+        <h3>Practice</h3>
+
+        <p>
+          Test yourself using Grade 12 practice questions.
+        </p>
+
+        <button
+          class="btn btn-primary"
+          data-open="practice"
+        >
+          Start Practice
+        </button>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">📊</div>
+
+        <h3>Your Progress</h3>
+
+        <p>
+          <strong id="completedCount">0</strong>
+          lessons completed.
+        </p>
+
+        <div class="progress-wrap">
+          <div id="progressBar" class="progress"></div>
+        </div>
+
+        <button
+          class="btn btn-primary"
+          data-open="progress"
+        >
+          View Progress
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PHYSICS
+===================================================== -->
+
+<section id="physics" class="page hidden">
+
+  <div class="section-header">
+
+    <div>
+      <h2>⚡ Physics Lessons</h2>
+
+      <div class="muted">
+        Grade 12 Physical Sciences — Physics.
+      </div>
+    </div>
+
+    <input
+      id="physicsSearch"
+      class="search"
+      placeholder="Search Physics lessons..."
+    >
+
+  </div>
+
+  <div id="physicsTopics" class="topic-grid"></div>
+
+</section>
+
+
+<!-- =====================================================
+     CHEMISTRY
+===================================================== -->
+
+<section id="chemistry" class="page hidden">
+
+  <div class="section-header">
+
+    <div>
+      <h2>🧪 Chemistry Lessons</h2>
+
+      <div class="muted">
+        Grade 12 Physical Sciences — Chemistry.
+      </div>
+    </div>
+
+    <input
+      id="chemistrySearch"
+      class="search"
+      placeholder="Search Chemistry lessons..."
+    >
+
+  </div>
+
+  <div id="chemistryTopics" class="topic-grid"></div>
+
+</section>
+
+
+<!-- =====================================================
+     LESSON
+===================================================== -->
+
+<section id="lessonPage" class="page hidden">
+
+  <div class="lesson">
+
+    <button
+      id="backLessons"
+      class="btn btn-light"
+    >
+      ← Back to lessons
+    </button>
+
+    <div id="lessonContent"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRACTICE
+===================================================== -->
+
+<section id="practice" class="page hidden">
+
+  <div class="section-header">
+
+    <div>
+      <h2>📝 Practice Quiz</h2>
+
+      <div class="muted">
+        Test your knowledge.
+      </div>
+    </div>
+
+  </div>
+
+
+  <form id="quizForm">
+
+
+    <div class="quiz-question">
+
+      <strong>
+        1. What is the SI unit of force?
+      </strong>
+
+      <label>
+        <input type="radio" name="q1" value="a">
+        Joule
+      </label>
+
+      <label>
+        <input type="radio" name="q1" value="b">
+        Newton
+      </label>
+
+      <label>
+        <input type="radio" name="q1" value="c">
+        Watt
+      </label>
+
+    </div>
+
+
+    <div class="quiz-question">
+
+      <strong>
+        2. Which quantity is conserved in an isolated collision?
+      </strong>
+
+      <label>
+        <input type="radio" name="q2" value="a">
+        Momentum
+      </label>
+
+      <label>
+        <input type="radio" name="q2" value="b">
+        Temperature
+      </label>
+
+      <label>
+        <input type="radio" name="q2" value="c">
+        Volume
+      </label>
+
+    </div>
+
+
+    <div class="quiz-question">
+
+      <strong>
+        3. What is the pH of a neutral solution at 25°C?
+      </strong>
+
+      <label>
+        <input type="radio" name="q3" value="a">
+        0
+      </label>
+
+      <label>
+        <input type="radio" name="q3" value="b">
+        7
+      </label>
+
+      <label>
+        <input type="radio" name="q3" value="c">
+        14
+      </label>
+
+    </div>
+
+
+    <div class="quiz-question">
+
+      <strong>
+        4. Which equation represents Ohm's law?
+      </strong>
+
+      <label>
+        <input type="radio" name="q4" value="a">
+        V = IR
+      </label>
+
+      <label>
+        <input type="radio" name="q4" value="b">
+        P = mgh
+      </label>
+
+      <label>
+        <input type="radio" name="q4" value="c">
+        F = ma
+      </label>
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit Quiz
+    </button>
+
+  </form>
+
+
+  <div id="quizResult"></div>
+
+</section>
+
+
+<!-- =====================================================
+     RESOURCES
+===================================================== -->
+
+<section id="resources" class="page hidden">
+
+  <div class="section-header">
+
+    <div>
+      <h2>📚 Study Resources</h2>
+
+      <div class="muted">
+        Your study material and downloads.
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Physics Resources</h3>
+
+    <div class="resource">
+
+      <div class="resource-title">
+        Physics Study Notes PDF
+      </div>
+
+      <a href="#" onclick="showResourceMessage(event)">
+        Download PDF
+      </a>
+
+    </div>
+
+
+    <div class="resource">
+
+      <div class="resource-title">
+        Physics Formula Sheet
+      </div>
+
+      <a href="#" onclick="showResourceMessage(event)">
+        Download PDF
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:16px">
+
+    <h3>Chemistry Resources</h3>
+
+    <div class="resource">
+
+      <div class="resource-title">
+        Chemistry Study Notes PDF
+      </div>
+
+      <a href="#" onclick="showResourceMessage(event)">
+        Download PDF
+      </a>
+
+    </div>
+
+
+    <div class="resource">
+
+      <div class="resource-title">
+        Chemistry Formula Sheet
+      </div>
+
+      <a href="#" onclick="showResourceMessage(event)">
+        Download PDF
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section id="progress" class="page hidden">
+
+  <div class="section-header">
+
+    <div>
+      <h2>📊 My Progress</h2>
+
+      <div class="muted">
+        Track your learning progress.
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Lessons completed</h3>
+
+    <p>
+      You have completed
+      <strong id="progressNumber">0</strong>
+      lessons.
+    </p>
+
+    <div class="progress-wrap">
+      <div
+        id="progressLarge"
+        class="progress"
+      ></div>
+    </div>
+
+    <p id="progressMessage" class="muted">
+      Start your first lesson.
+    </p>
+
+  </div>
+
+</section>
+
+
+<footer>
+  StudyPro SA © 2026 • Grade 12 Physical Sciences
+</footer>
+
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+/* FIREBASE CONFIGURATION */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyAGlAUzxjZ7UlQTrh6JNW4L_C5JknFdA08",
+
+  authDomain:
+  "study-pro-sa.firebaseapp.com",
+
+  projectId:
+  "study-pro-sa",
+
+  storageBucket:
+  "study-pro-sa.firebasestorage.app",
+
+  messagingSenderId:
+  "1043280089865",
+
+  appId:
+  "1:1043280089865:web:243db4f82a3ef818b279d8",
+
+  measurementId:
+  "G-YNKK9S7869"
+
+};
+
+
+/* INITIALIZE FIREBASE */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+
+/* USER */
+
+const userEmail =
+document.getElementById("userEmail");
+
+
+/*
+If Firebase finds no logged-in user,
+return to the login page.
+
+If the user is logged in,
+the dashboard remains available.
+*/
+
+onAuthStateChanged(auth, user => {
+
+  if(user){
+
+    userEmail.textContent =
+      user.email || "Student";
+
+  }else{
+
+    window.location.href =
+      "index.html";
+
+  }
+
+});
+
+
+/* LOGOUT */
+
+document
+.getElementById("logoutButton")
+.addEventListener("click", async () => {
+
+  try{
+
+    await signOut(auth);
+
+    window.location.href =
+      "index.html";
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Unable to log out. Please try again."
+    );
+
+  }
+
+});
+
+
+/* =====================================================
+   LESSON DATA
+===================================================== */
+
+const physicsLessons = [
+
+  {
+    id:"motion",
+    title:"Motion in One Dimension",
+    description:
+      "Displacement, velocity, acceleration and motion graphs."
+  },
+
+  {
+    id:"vectors",
+    title:"Vectors",
+    description:
+      "Vector quantities, components and resultant vectors."
+  },
+
+  {
+    id:"newton",
+    title:"Newton's Laws",
+    description:
+      "Newton's three laws and free-body diagrams."
+  },
+
+  {
+    id:"momentum",
+    title:"Momentum and Impulse",
+    description:
+      "Momentum, impulse and conservation of momentum."
+  },
+
+  {
+    id:"work",
+    title:"Work, Energy and Power",
+    description:
+      "Work done, kinetic energy, potential energy and power."
+  },
+
+  {
+    id:"waves",
+    title:"Waves and Sound",
+    description:
+      "Wave properties, sound and Doppler effect."
+  },
+
+  {
+    id:"electrostatics",
+    title:"Electrostatics",
+    description:
+      "Electric charge, Coulomb's law and electric fields."
+  },
+
+  {
+    id:"circuits",
+    title:"Electric Circuits",
+    description:
+      "Current, potential difference, resistance and circuits."
+  }
+
+];
+
+
+const chemistryLessons = [
+
+  {
+    id:"organic",
+    title:"Organic Chemistry",
+    description:
+      "Organic compounds, functional groups and reactions."
+  },
+
+  {
+    id:"rates",
+    title:"Chemical Reaction Rates",
+    description:
+      "Factors affecting reaction rate and reaction profiles."
+  },
+
+  {
+    id:"equilibrium",
+    title:"Chemical Equilibrium",
+    description:
+      "Dynamic equilibrium and Le Chatelier's principle."
+  },
+
+  {
+    id:"acids",
+    title:"Acids and Bases",
+    description:
+      "Acids, bases, pH and titration concepts."
+  },
+
+  {
+    id:"electrochem",
+    title:"Electrochemical Reactions",
+    description:
+      "Oxidation, reduction and electrochemical cells."
+  },
+
+  {
+    id:"stoichiometry",
+    title:"Stoichiometry",
+    description:
+      "Moles, molar mass and chemical calculations."
+  }
+
+];
+
+
+/* =====================================================
+   RENDER TOPICS
+===================================================== */
+
+function renderTopics(
+  lessons,
+  containerId,
+  subject
+){
+
+  const container =
+    
