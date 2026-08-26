@@ -1313,3 +1313,545 @@ function renderTopics(
 
   const container =
     
+/* =====================================================
+   STUDYPRO SA — LESSON ENGINE
+===================================================== */
+
+const lessonData = {
+
+  motion: {
+    subject: "Physics",
+    title: "Motion in One Dimension",
+    icon: "⚡",
+
+    video: "https://www.youtube.com/embed/ZM8ECpBuQYE",
+
+    content: `
+      <h1>Motion in One Dimension</h1>
+
+      <p>
+        Motion describes how an object changes its position with
+        time. In Grade 12 Physics, we use displacement, velocity
+        and acceleration to describe motion.
+      </p>
+
+      <h2>1. Displacement</h2>
+
+      <p>
+        Displacement is the change in position of an object from
+        its starting point to its final position.
+      </p>
+
+      <div class="formula">
+        Δx = xf − xi
+      </div>
+
+      <h2>2. Velocity</h2>
+
+      <p>
+        Average velocity is displacement divided by the time taken.
+      </p>
+
+      <div class="formula">
+        v = Δx / Δt
+      </div>
+
+      <h2>3. Acceleration</h2>
+
+      <p>
+        Acceleration describes how quickly velocity changes.
+      </p>
+
+      <div class="formula">
+        a = Δv / Δt
+      </div>
+
+      <div class="example">
+        <h3>Worked Example</h3>
+
+        <p>
+          A car changes its velocity from 10 m·s⁻¹ to
+          30 m·s⁻¹ in 5 seconds.
+        </p>
+
+        <div class="formula">
+          a = (30 − 10) / 5<br>
+          a = 4 m·s⁻²
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Exam Tip:</strong>
+        Always include the correct SI unit in your final answer.
+      </div>
+    `
+  },
+
+
+  vectors: {
+    subject: "Physics",
+    title: "Vectors",
+    icon: "🧭",
+
+    video: "https://www.youtube.com/embed/fNk_zzaMoSs",
+
+    content: `
+      <h1>Vectors</h1>
+
+      <p>
+        A vector quantity has both magnitude and direction.
+      </p>
+
+      <h2>Examples of Vector Quantities</h2>
+
+      <ul>
+        <li>Displacement</li>
+        <li>Velocity</li>
+        <li>Acceleration</li>
+        <li>Force</li>
+        <li>Momentum</li>
+      </ul>
+
+      <h2>Scalar Quantities</h2>
+
+      <p>
+        Scalars have magnitude only.
+      </p>
+
+      <ul>
+        <li>Distance</li>
+        <li>Speed</li>
+        <li>Mass</li>
+        <li>Time</li>
+        <li>Temperature</li>
+      </ul>
+
+      <div class="note">
+        Remember: vectors require both magnitude and direction.
+      </div>
+    `
+  },
+
+
+  newton: {
+    subject: "Physics",
+    title: "Newton's Laws of Motion",
+    icon: "⚙️",
+
+    video: "https://www.youtube.com/embed/kKKM8Y-u7ds",
+
+    content: `
+      <h1>Newton's Laws of Motion</h1>
+
+      <h2>Newton's First Law</h2>
+
+      <p>
+        An object remains at rest or continues moving at constant
+        velocity unless acted upon by a net external force.
+      </p>
+
+      <h2>Newton's Second Law</h2>
+
+      <div class="formula">
+        Fnet = ma
+      </div>
+
+      <p>
+        The net force acting on an object equals its mass multiplied
+        by its acceleration.
+      </p>
+
+      <h2>Newton's Third Law</h2>
+
+      <p>
+        When object A exerts a force on object B, object B exerts
+        an equal magnitude force in the opposite direction on A.
+      </p>
+
+      <div class="example">
+        <h3>Example</h3>
+
+        <p>
+          A 5 kg object accelerates at 2 m·s⁻².
+          Calculate the net force.
+        </p>
+
+        <div class="formula">
+          F = ma<br>
+          F = 5 × 2<br>
+          F = 10 N
+        </div>
+      </div>
+    `
+  },
+
+
+  momentum: {
+    subject: "Physics",
+    title: "Momentum and Impulse",
+    icon: "💥",
+
+    video: "https://www.youtube.com/embed/2E3P7JbYQvA",
+
+    content: `
+      <h1>Momentum and Impulse</h1>
+
+      <p>
+        Momentum is the product of mass and velocity.
+      </p>
+
+      <div class="formula">
+        p = mv
+      </div>
+
+      <h2>Impulse</h2>
+
+      <p>
+        Impulse is equal to the change in momentum.
+      </p>
+
+      <div class="formula">
+        FΔt = Δp
+      </div>
+
+      <h2>Conservation of Momentum</h2>
+
+      <p>
+        In an isolated system, the total momentum before a collision
+        is equal to the total momentum after the collision.
+      </p>
+
+      <div class="formula">
+        p(before) = p(after)
+      </div>
+
+      <div class="note">
+        <strong>Exam Tip:</strong>
+        Choose a positive direction before solving collision
+        problems.
+      </div>
+    `
+  },
+
+
+  work: {
+    subject: "Physics",
+    title: "Work, Energy and Power",
+    icon: "🔋",
+
+    video: "https://www.youtube.com/embed/w4QFJb9a8vo",
+
+    content: `
+      <h1>Work, Energy and Power</h1>
+
+      <h2>Work</h2>
+
+      <p>
+        Work is done when a force causes displacement.
+      </p>
+
+      <div class="formula">
+        W = FΔx cosθ
+      </div>
+
+      <h2>Kinetic Energy</h2>
+
+      <div class="formula">
+        Ek = ½mv²
+      </div>
+
+      <h2>Gravitational Potential Energy</h2>
+
+      <div class="formula">
+        Ep = mgh
+      </div>
+
+      <h2>Power</h2>
+
+      <div class="formula">
+        P = W / Δt
+      </div>
+
+      <div class="example">
+        <h3>Example</h3>
+
+        <p>
+          A 2 kg object moves at 5 m·s⁻¹.
+          Calculate its kinetic energy.
+        </p>
+
+        <div class="formula">
+          Ek = ½mv²<br>
+          Ek = ½(2)(5²)<br>
+          Ek = 25 J
+        </div>
+      </div>
+    `
+  },
+
+
+  waves: {
+    subject: "Physics",
+    title: "Waves and Sound",
+    icon: "🌊",
+
+    video: "https://www.youtube.com/embed/2kBOqphGf8E",
+
+    content: `
+      <h1>Waves and Sound</h1>
+
+      <p>
+        A wave transfers energy from one place to another without
+        transferring matter over the entire distance.
+      </p>
+
+      <h2>Wave Equation</h2>
+
+      <div class="formula">
+        v = fλ
+      </div>
+
+      <p>
+        Where:
+      </p>
+
+      <ul>
+        <li>v = wave speed</li>
+        <li>f = frequency</li>
+        <li>λ = wavelength</li>
+      </ul>
+
+      <h2>Frequency</h2>
+
+      <p>
+        Frequency is the number of complete waves produced per second.
+      </p>
+
+      <div class="formula">
+        f = 1 / T
+      </div>
+    `
+  },
+
+
+  electrostatics: {
+    subject: "Physics",
+    title: "Electrostatics",
+    icon: "⚡",
+
+    video: "https://www.youtube.com/embed/9Jd6w6N8B7M",
+
+    content: `
+      <h1>Electrostatics</h1>
+
+      <p>
+        Electrostatics deals with electric charges that are stationary.
+      </p>
+
+      <h2>Coulomb's Law</h2>
+
+      <div class="formula">
+        F = k(Q₁Q₂ / r²)
+      </div>
+
+      <p>
+        The force between two charged objects depends on their charges
+        and the distance between them.
+      </p>
+
+      <h2>Electric Field</h2>
+
+      <div class="formula">
+        E = F / Q
+      </div>
+
+      <div class="note">
+        Like charges repel. Unlike charges attract.
+      </div>
+    `
+  },
+
+
+  circuits: {
+    subject: "Physics",
+    title: "Electric Circuits",
+    icon: "🔌",
+
+    video: "https://www.youtube.com/embed/8Posj_7zY7A",
+
+    content: `
+      <h1>Electric Circuits</h1>
+
+      <h2>Current</h2>
+
+      <div class="formula">
+        I = Q / Δt
+      </div>
+
+      <h2>Ohm's Law</h2>
+
+      <div class="formula">
+        V = IR
+      </div>
+
+      <h2>Electrical Power</h2>
+
+      <div class="formula">
+        P = VI
+      </div>
+
+      <p>
+        Current is measured in amperes, potential difference in volts
+        and resistance in ohms.
+      </p>
+
+      <div class="note">
+        <strong>Remember:</strong>
+        V = voltage, I = current and R = resistance.
+      </div>
+    `
+  },
+
+
+  organic: {
+    subject: "Chemistry",
+    title: "Organic Chemistry",
+    icon: "🧪",
+
+    video: "https://www.youtube.com/embed/0z4Yw4b7n0A",
+
+    content: `
+      <h1>Organic Chemistry</h1>
+
+      <p>
+        Organic chemistry studies compounds containing carbon,
+        particularly hydrocarbons and their derivatives.
+      </p>
+
+      <h2>Hydrocarbons</h2>
+
+      <ul>
+        <li>Alkanes</li>
+        <li>Alkenes</li>
+        <li>Alkynes</li>
+        <li>Aromatic compounds</li>
+      </ul>
+
+      <h2>Alkanes</h2>
+
+      <div class="formula">
+        CnH₂n+₂
+      </div>
+
+      <h2>Alkenes</h2>
+
+      <div class="formula">
+        CnH₂n
+      </div>
+
+      <div class="note">
+        Learn the functional groups and naming rules carefully.
+      </div>
+    `
+  },
+
+
+  rates: {
+    subject: "Chemistry",
+    title: "Chemical Reaction Rates",
+    icon: "⏱️",
+
+    video: "https://www.youtube.com/embed/6fLJ5d1P1sA",
+
+    content: `
+      <h1>Chemical Reaction Rates</h1>
+
+      <p>
+        Reaction rate describes how quickly reactants are converted
+        into products.
+      </p>
+
+      <h2>Factors Affecting Reaction Rate</h2>
+
+      <ul>
+        <li>Temperature</li>
+        <li>Concentration</li>
+        <li>Surface area</li>
+        <li>Catalysts</li>
+        <li>Pressure for gases</li>
+      </ul>
+
+      <h2>Collision Theory</h2>
+
+      <p>
+        Particles must collide with sufficient energy and suitable
+        orientation for a successful reaction.
+      </p>
+    `
+  },
+
+
+  equilibrium: {
+    subject: "Chemistry",
+    title: "Chemical Equilibrium",
+    icon: "⚖️",
+
+    video: "https://www.youtube.com/embed/7fE4V0J5k4E",
+
+    content: `
+      <h1>Chemical Equilibrium</h1>
+
+      <p>
+        Dynamic equilibrium occurs when the forward and reverse
+        reactions occur at equal rates.
+      </p>
+
+      <h2>Le Chatelier's Principle</h2>
+
+      <p>
+        When a system at equilibrium is disturbed, the system shifts
+        in a direction that reduces the effect of the disturbance.
+      </p>
+
+      <div class="note">
+        Remember to consider concentration, temperature and pressure
+        when analysing equilibrium changes.
+      </div>
+    `
+  },
+
+
+  acids: {
+    subject: "Chemistry",
+    title: "Acids and Bases",
+    icon: "🧪",
+
+    video: "https://www.youtube.com/embed/ANi709MYnWg",
+
+    content: `
+      <h1>Acids and Bases</h1>
+
+      <p>
+        Acids and bases are important concepts in Grade 12 Chemistry.
+      </p>
+
+      <h2>pH</h2>
+
+      <div class="formula">
+        pH = −log[H₃O⁺]
+      </div>
+
+      <h2>Strong Acids</h2>
+
+      <p>
+        Strong acids ionise almost completely in aqueous solution.
+      </p>
+
+      <h2>Neutralisation</h2>
+
+      <p>
+        Acid + Base → Salt + Water
+      </p>
+
+      <div class="note">
+        At 25°C, a neutral solution has a p
