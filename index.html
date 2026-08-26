@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudyPro SA - Grade 12 Physical Sciences online learning platform">
+<title>StudyPro SA | Learn. Practise. Pass.</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fb;
+  color:#111827;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* HEADER */
+header{
+  background:#0b1220;
+  color:white;
+  padding:16px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#38bdf8;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav a,
+.nav button{
+  padding:10px 14px;
+  border-radius:8px;
+  color:white;
+  background:transparent;
+  border:1px solid transparent;
+}
+
+.nav a:hover,
+.nav button:hover{
+  background:#1e293b;
+}
+
+.login-btn{
+  border:1px solid #38bdf8!important;
+}
+
+/* HERO */
+.hero{
+  min-height:620px;
+  padding:70px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  background:
+    radial-gradient(circle at top right,#2563eb,#0b1220 60%);
+  color:white;
+}
+
+.hero-content{
+  max-width:720px;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  padding:8px 13px;
+  border-radius:999px;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(40px,7vw,72px);
+  line-height:1;
+  margin:0 0 22px;
+}
+
+.hero h1 span{
+  color:#38bdf8;
+}
+
+.hero p{
+  font-size:19px;
+  line-height:1.7;
+  color:#dbeafe;
+  max-width:650px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 20px;
+  border-radius:10px;
+  border:0;
+  font-weight:800;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:white;
+}
+
+.btn-primary:hover{
+  background:#1d4ed8;
+}
+
+.btn-light{
+  background:white;
+  color:#111827;
+}
+
+.btn-light:hover{
+  background:#e5e7eb;
+}
+
+.hero-icon{
+  font-size:150px;
+  min-width:200px;
+  text-align:center;
+}
+
+/* SECTIONS */
+section{
+  padding:65px 6%;
+}
+
+.section-title{
+  text-align:center;
+  max-width:750px;
+  margin:0 auto 40px;
+}
+
+.section-title h2{
+  font-size:38px;
+  margin:0 0 12px;
+}
+
+.section-title p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.feature{
+  background:white;
+  padding:28px;
+  border-radius:16px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 8px 25px rgba(15,23,42,.05);
+}
+
+.feature-icon{
+  font-size:38px;
+}
+
+.feature h3{
+  margin:14px 0 8px;
+}
+
+.feature p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+/* SUBJECTS */
+.subjects{
+  background:#eef2ff;
+}
+
+.subject-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.subject{
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  border:1px solid #e5e7eb;
+}
+
+.subject h3{
+  font-size:25px;
+  margin-top:0;
+}
+
+.subject ul{
+  padding-left:20px;
+  line-height:2;
+  color:#475569;
+}
+
+/* PRICING */
+.pricing{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.price-card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 10px 30px rgba(15,23,42,.07);
+}
+
+.price-card.premium{
+  border:2px solid #2563eb;
+}
+
+.price-card h3{
+  font-size:25px;
+  margin-top:0;
+}
+
+.price{
+  font-size:42px;
+  font-weight:900;
+  margin:15px 0;
+}
+
+.price small{
+  font-size:15px;
+  color:#64748b;
+}
+
+.price-card ul{
+  padding-left:20px;
+  line-height:2;
+  color:#475569;
+}
+
+/* CTA */
+.cta{
+  background:#0b1220;
+  color:white;
+  text-align:center;
+}
+
+.cta h2{
+  font-size:40px;
+  margin-top:0;
+}
+
+.cta p{
+  color:#cbd5e1;
+  max-width:650px;
+  margin:0 auto 25px;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  background:#070b14;
+  color:#94a3b8;
+  text-align:center;
+  padding:30px 20px;
+}
+
+footer strong{
+  color:white;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+
+  header{
+    padding:14px 18px;
+  }
+
+  .nav a:not(.login-btn){
+    display:none;
+  }
+
+  .hero{
+    padding:55px 20px;
+    text-align:center;
+  }
+
+  .hero p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+
+  .hero-icon{
+    display:none;
+  }
+
+  section{
+    padding:50px 20px;
+  }
+
+  .features,
+  .subjects,
+  .pricing{
+    grid-template-columns:1fr;
+  }
+
+  .section-title h2{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <a href="index.html" class="logo">
+    StudyPro <span>SA</span>
+  </a>
+
+  <nav class="nav">
+
+    <a href="#features">
+      Features
+    </a>
+
+    <a href="#subjects">
+      Subjects
+    </a>
+
+    <a href="pricing.html">
+      Pricing
+    </a>
+
+    <a href="dashboard.html" id="dashboardLink">
+      Dashboard
+    </a>
+
+    <a href="login.html" class="login-btn">
+      Login
+    </a>
+
+  </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <span class="badge">
+      GRADE 12 • PHYSICAL SCIENCES • SOUTH AFRICA
+    </span>
+
+    <h1>
+      Learn smarter.<br>
+      <span>Pass stronger.</span>
+    </h1>
+
+    <p>
+      StudyPro SA is an online Physical Sciences learning
+      platform designed to help Grade 12 learners understand
+      Physics and Chemistry through structured lessons,
+      practice questions, videos and study resources.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a
+        href="dashboard.html"
+        class="btn btn-primary"
+      >
+        Start Studying →
+      </a>
+
+      <a
+        href="pricing.html"
+        class="btn btn-light"
+      >
+        View Premium Plans
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="hero-icon">
+    ⚛️
+  </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+  <div class="section-title">
+
+    <h2>Everything you need to study</h2>
+
+    <p>
+      StudyPro SA brings your Grade 12 Physical Sciences
+      study tools together in one platform.
+    </p>
+
+  </div>
+
+
+  <div class="features">
+
+    <div class="feature">
+
+      <div class="feature-icon">📚</div>
+
+      <h3>Structured Lessons</h3>
+
+      <p>
+        Follow organised Physics and Chemistry lessons
+        instead of searching randomly for study material.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">🎥</div>
+
+      <h3>Video Learning</h3>
+
+      <p>
+        Connect lessons with educational videos to help
+        explain difficult concepts visually.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">📝</div>
+
+      <h3>Practice & Quizzes</h3>
+
+      <p>
+        Test yourself with questions and track your
+        learning progress.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">📄</div>
+
+      <h3>Study Resources</h3>
+
+      <p>
+        Access lesson resources and downloadable study
+        material in one place.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">📊</div>
+
+      <h3>Progress Tracking</h3>
+
+      <p>
+        Monitor completed lessons and continue where
+        you stopped.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">📱</div>
+
+      <h3>Mobile Friendly</h3>
+
+      <p>
+        Study from your Android phone, tablet or computer.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SUBJECTS -->
+
+<section id="subjects" class="subjects">
+
+  <div class="section-title">
+
+    <h2>Grade 12 Physical Sciences</h2>
+
+    <p>
+      Build your knowledge across the major Physics and
+      Chemistry areas.
+    </p>
+
+  </div>
+
+
+  <div class="subject-grid">
+
+    <div class="subject">
+
+      <h3>⚡ Physics</h3>
+
+      <ul>
+        <li>Mechanics</li>
+        <li>Momentum & Impulse</li>
+        <li>Vertical Projectile Motion</li>
+        <li>Work, Energy & Power</li>
+        <li>Waves & Sound</li>
+        <li>Electrostatics</li>
+        <li>Electric Circuits</li>
+        <li>Electrodynamics</li>
+      </ul>
+
+    </div>
+
+
+    <div class="subject">
+
+      <h3>🧪 Chemistry</h3>
+
+      <ul>
+        <li>Rates of Reaction</li>
+        <li>Chemical Equilibrium</li>
+        <li>Acids & Bases</li>
+        <li>Electrochemical Reactions</li>
+        <li>Organic Chemistry</li>
+        <li>Reaction Energy</li>
+        <li>Stoichiometry</li>
+        <li>Chemical Calculations</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PRICING PREVIEW -->
+
+<section>
+
+  <div class="section-title">
+
+    <h2>Choose your study plan</h2>
+
+    <p>
+      Start learning and upgrade when you need additional
+      premium study resources.
+    </p>
+
+  </div>
+
+
+  <div class="pricing">
+
+    <div class="price-card">
+
+      <h3>Free</h3>
+
+      <div class="price">
+        R0
+        <small>/ month</small>
+      </div>
+
+      <ul>
+        <li>Access to selected lessons</li>
+        <li>Selected practice questions</li>
+        <li>Basic study resources</li>
+        <li>Student account</li>
+      </ul>
+
+      <a
+        href="dashboard.html"
+        class="btn btn-light"
+      >
+        Start Free
+      </a>
+
+    </div>
+
+
+    <div class="price-card premium">
+
+      <h3>Premium</h3>
+
+      <div class="price">
+        R99
+        <small>/ month</small>
+      </div>
+
+      <ul>
+        <li>Full Physics lessons</li>
+        <li>Full Chemistry lessons</li>
+        <li>Premium practice questions</li>
+        <li>Video learning resources</li>
+        <li>Downloadable study resources</li>
+        <li>Progress tracking</li>
+      </ul>
+
+      <a
+        href="pricing.html"
+        class="btn btn-primary"
+      >
+        View Premium
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+  <h2>Ready to start studying?</h2>
+
+  <p>
+    Create your StudyPro SA account and begin building
+    your Grade 12 Physical Sciences knowledge.
+  </p>
+
+  <a
+    href="dashboard.html"
+    class="btn btn-primary"
+  >
+    Start Studying →
+  </a>
+
+</section>
+
+
+<footer>
+
+  <strong>StudyPro SA</strong>
+
+  <br><br>
+
+  Grade 12 Physical Sciences Online Learning Platform
+
+  <br><br>
+
+  © 2026 StudyPro SA. All rights reserved.
+
+</footer>
+
+
+<script type="module">
+
+/*
+=========================================================
+FIREBASE CONFIGURATION
+=========================================================
+*/
+
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyAGlAUzxjZ7UlQTrh6JNW4L_C5JknFdA08",
+
+  authDomain:
+  "study-pro-sa.firebaseapp.com",
+
+  projectId:
+  "study-pro-sa",
+
+  storageBucket:
+  "study-pro-sa.firebasestorage.app",
+
+  messagingSenderId:
+  "1043280089865",
+
+  appId:
+  "1:1043280089865:web:243db4f82a3ef818b279d8",
+
+  measurementId:
+  "G-YNKK9S7869"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+/*
+=========================================================
+CHECK LOGIN STATUS
+=========================================================
+*/
+
+const loginButton =
+document.querySelector(".login-btn");
+
+const dashboardLink =
+document.getElementById("dashboardLink");
+
+
+onAuthStateChanged(auth, (user) => {
+
+  if(user){
+
+    /*
+    User is logged in.
+    */
+
+    loginButton.textContent = "My Account";
+
+    loginButton.href =
+    "dashboard.html";
+
+    dashboardLink.textContent =
+    "Continue Studying →";
+
+  }else{
+
+    /*
+    User is not logged in.
+    */
+
+    loginButton.textContent =
+    "Login";
+
+    loginButton.href =
+    "login.html";
+
+    dashboardLink.textContent =
+    "Dashboard";
+
+  }
+
+});
+
+</script>
+
+</body>
+  </html>
