@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="description"
+  content="StudyPro SA Premium Subscription Plans"
+/>
+
+<title>StudyPro SA | Pricing</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fb;
+  color:#111827;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  background:#0b1220;
+  color:white;
+  padding:16px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#38bdf8;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav a{
+  padding:10px 14px;
+  border-radius:8px;
+  color:white;
+}
+
+.nav a:hover{
+  background:#1e293b;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  background:
+    radial-gradient(
+      circle at top right,
+      #2563eb,
+      #0b1220 60%
+    );
+
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  margin:0 0 18px;
+  font-size:clamp(38px,6vw,60px);
+}
+
+.hero h1 span{
+  color:#38bdf8;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:#dbeafe;
+  line-height:1.7;
+  font-size:18px;
+}
+
+/* =========================
+   PRICING
+========================= */
+
+.pricing-section{
+  padding:65px 20px;
+}
+
+.pricing{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:20px;
+  padding:35px;
+  box-shadow:0 12px 35px rgba(15,23,42,.08);
+}
+
+.card.premium{
+  border:2px solid #2563eb;
+  position:relative;
+}
+
+.popular{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#2563eb;
+  color:white;
+  padding:7px 16px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.card h2{
+  margin-top:0;
+  font-size:28px;
+}
+
+.description{
+  color:#64748b;
+  line-height:1.6;
+}
+
+.price{
+  font-size:48px;
+  font-weight:900;
+  margin:22px 0 5px;
+}
+
+.price small{
+  font-size:15px;
+  color:#64748b;
+  font-weight:normal;
+}
+
+.price-note{
+  color:#64748b;
+  font-size:13px;
+}
+
+.features{
+  list-style:none;
+  padding:0;
+  margin:25px 0;
+}
+
+.features li{
+  padding:9px 0;
+  color:#374151;
+}
+
+.features li::before{
+  content:"✓";
+  color:#16a34a;
+  font-weight:900;
+  margin-right:9px;
+}
+
+.btn{
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:14px 18px;
+  border-radius:10px;
+  border:0;
+  font-weight:800;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:white;
+}
+
+.btn-primary:hover{
+  background:#1d4ed8;
+}
+
+.btn-light{
+  background:#f8fafc;
+  color:#111827;
+  border:1px solid #dbe3ef;
+}
+
+.btn-light:hover{
+  background:#e5e7eb;
+}
+
+/* =========================
+   COMPARISON
+========================= */
+
+.comparison{
+  padding:65px 20px;
+  background:#eef2ff;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.section-title h2{
+  font-size:35px;
+  margin:0 0 10px;
+}
+
+.section-title p{
+  color:#64748b;
+}
+
+.table-wrap{
+  max-width:950px;
+  margin:auto;
+  overflow-x:auto;
+  background:white;
+  border-radius:16px;
+  box-shadow:0 8px 25px rgba(15,23,42,.06);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:16px;
+  border-bottom:1px solid #e5e7eb;
+  text-align:center;
+}
+
+th:first-child,
+td:first-child{
+  text-align:left;
+}
+
+th{
+  background:#f8fafc;
+}
+
+.yes{
+  color:#16a34a;
+  font-weight:900;
+}
+
+.no{
+  color:#dc2626;
+  font-weight:900;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+  max-width:850px;
+  margin:auto;
+  padding:65px 20px;
+}
+
+.faq h2{
+  text-align:center;
+  font-size:35px;
+  margin-top:0;
+  margin-bottom:35px;
+}
+
+details{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:17px;
+  margin-bottom:12px;
+}
+
+summary{
+  cursor:pointer;
+  font-weight:800;
+}
+
+details p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+  background:#0b1220;
+  color:white;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.cta h2{
+  font-size:38px;
+  margin-top:0;
+}
+
+.cta p{
+  max-width:650px;
+  margin:0 auto 25px;
+  color:#cbd5e1;
+  line-height:1.6;
+}
+
+.cta-btn{
+  display:inline-block;
+  background:#2563eb;
+  color:white;
+  padding:14px 22px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.cta-btn:hover{
+  background:#1d4ed8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#070b14;
+  color:#94a3b8;
+  text-align:center;
+  padding:30px 20px;
+}
+
+footer strong{
+  color:white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:750px){
+
+  header{
+    padding:14px 18px;
+  }
+
+  .nav a:nth-child(2),
+  .nav a:nth-child(3){
+    display:none;
+  }
+
+  .hero{
+    padding:60px 20px;
+  }
+
+  .pricing{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:28px 22px;
+  }
+
+  .price{
+    font-size:42px;
+  }
+
+  .section-title h2,
+  .faq h2{
+    font-size:29px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <a href="index.html" class="logo">
+    StudyPro <span>SA</span>
+  </a>
+
+  <nav class="nav">
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="dashboard.html">
+      Dashboard
+    </a>
+
+    <a href="pricing.html">
+      Pricing
+    </a>
+
+    <a href="payment.html">
+      Subscribe
+    </a>
+
+  </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <span class="badge">
+    STUDYPRO SA PREMIUM
+  </span>
+
+  <h1>
+    Choose your <span>study plan.</span>
+  </h1>
+
+  <p>
+    Get access to structured Grade 12 Physical Sciences
+    lessons, practice activities, study resources and
+    premium learning material.
+  </p>
+
+</section>
+
+
+<!-- =========================
+     PRICING CARDS
+========================= -->
+
+<section class="pricing-section">
+
+  <div class="pricing">
+
+    <!-- FREE -->
+
+    <div class="card">
+
+      <h2>Free</h2>
+
+      <p class="description">
+        Start learning with selected StudyPro SA
+        resources at no monthly cost.
+      </p>
+
+      <div class="price">
+        R0
+        <small>/ month</small>
+      </div>
+
+      <div class="price-note">
+        No payment required
+      </div>
+
+      <ul class="features">
+
+        <li>
+          Student account
+        </li>
+
+        <li>
+          Selected lessons
+        </li>
+
+        <li>
+          Selected practice questions
+        </li>
+
+        <li>
+          Basic study resources
+        </li>
+
+        <li>
+          Basic progress tracking
+        </li>
+
+        <li>
+          Mobile access
+        </li>
+
+      </ul>
+
+      <a
+        href="dashboard.html"
+        class="btn btn-light"
+      >
+        Start Free
+      </a>
+
+    </div>
+
+
+    <!-- PREMIUM -->
+
+    <div class="card premium">
+
+      <div class="popular">
+        MOST POPULAR
+      </div>
+
+      <h2>Premium</h2>
+
+      <p class="description">
+        Unlock the complete StudyPro SA learning
+        experience for serious Grade 12 learners.
+      </p>
+
+      <div class="price">
+        R99
+        <small>/ month</small>
+      </div>
+
+      <div class="price-note">
+        Monthly subscription
+      </div>
+
+      <ul class="features">
+
+        <li>
+          Full Physics lessons
+        </li>
+
+        <li>
+          Full Chemistry lessons
+        </li>
+
+        <li>
+          Premium practice questions
+        </li>
+
+        <li>
+          Video learning resources
+        </li>
+
+        <li>
+          Downloadable study resources
+        </li>
+
+        <li>
+          Progress tracking
+        </li>
+
+        <li>
+          Exam preparation material
+        </li>
+
+        <li>
+          Access from phone or computer
+        </li>
+
+      </ul>
+
+      <a
+        href="payment.html"
+        class="btn btn-primary"
+      >
+        Subscribe for R99/month →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COMPARISON
+========================= -->
+
+<section class="comparison">
+
+  <div class="section-title">
+
+    <h2>
+      Free vs Premium
+    </h2>
+
+    <p>
+      See what you receive with each plan.
+    </p>
+
+  </div>
+
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            Feature
+          </th>
+
+          <th>
+            Free
+          </th>
+
+          <th>
+            Premium
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr>
+
+          <td>
+            Student account
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            Selected lessons
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            Full Physics lessons
+          </td>
+
+          <td class="no">
+            —
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            Full Chemistry lessons
+          </td>
+
+          <td class="no">
+            —
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            Premium videos
+          </td>
+
+          <td class="no">
+            —
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            Downloadable resources
+          </td>
+
+          <td class="no">
+            —
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            Premium practice
+          </td>
+
+          <td class="no">
+            —
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+            Progress tracking
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+          <td class="yes">
+            ✓
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section class="faq">
+
+  <h2>
+    Frequently Asked Questions
+  </h2>
+
+
+  <details>
+
+    <summary>
+      What is StudyPro SA?
+    </summary>
+
+    <p>
+      StudyPro SA is an online learning platform designed
+      to help Grade 12 learners study Physical Sciences
+      using structured lessons, practice and study resources.
+    </p>
+
+  </details>
+
+
+  <details>
+
+    <summary>
+      What does Premium cost?
+    </summary>
+
+    <p>
+      The current planned Premium subscription is R99 per
+      month. The payment page will be connected to the
+      payment system separately.
+    </p>
+
+  </details>
+
+
+  <details>
+
+    <summary>
+      Can I start for free?
+    </summary>
+
+    <p>
+      Yes. The Free plan provides access to selected
+      learning material before upgrading to Premium.
+    </p>
+
+  </details>
+
+
+  <details>
+
+    <summary>
+      Can I study from my phone?
+    </summary>
+
+    <p>
+      Yes. StudyPro SA is designed to work on Android
+      phones, tablets and computers.
+    </p>
+
+  </details>
+
+
+  <details>
+
+    <summary>
+      What happens after I subscribe?
+    </summary>
+
+    <p>
+      After the payment system is connected, successful
+      Premium subscribers will be given access to the
+      Premium learning area.
+    </p>
+
+  </details>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+  <h2>
+    Ready to unlock Premium?
+  </h2>
+
+  <p>
+    Upgrade your study experience and get access to
+    the full StudyPro SA learning platform.
+  </p>
+
+  <a
+    href="payment.html"
+    class="cta-btn"
+  >
+    Subscribe for R99/month →
+  </a>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <strong>
+    StudyPro SA
+  </strong>
+
+  <br><br>
+
+  Grade 12 Physical Sciences Online Learning Platform
+
+  <br><br>
+
+  © 2026 StudyPro SA. All rights reserved.
+
+</footer>
+
+</body>
+  </html>
